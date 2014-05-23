@@ -11,10 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140523213445) do
+ActiveRecord::Schema.define(version: 20140523214648) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "flights", force: true do |t|
+    t.integer  "flight_number"
+    t.string   "airline_name"
+    t.integer  "date_year"
+    t.integer  "date_month"
+    t.integer  "date_day"
+    t.string   "departure_airport"
+    t.string   "arrival_airport"
+    t.integer  "stops"
+    t.datetime "departure_time"
+    t.datetime "arrival_time"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "flights", ["user_id"], name: "index_flights_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -29,6 +47,8 @@ ActiveRecord::Schema.define(version: 20140523213445) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "first_name"
+    t.string   "last_name"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
