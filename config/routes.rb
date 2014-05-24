@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   root 'flights#new'
 
-  # get '/profile', to: 'users#profile'
+  get '/profile', to: 'users#profile'
   
   resources :contacts, only: [:new, :create, :show, :edit, :update]
 
@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
 end
 
-#                 Prefix Verb   URI Pattern                    Controller#Action
+#                   Prefix Verb   URI Pattern                    Controller#Action
 #         new_user_session GET    /users/sign_in(.:format)       devise/sessions#new
 #             user_session POST   /users/sign_in(.:format)       devise/sessions#create
 #     destroy_user_session DELETE /users/sign_out(.:format)      devise/sessions#destroy
@@ -28,6 +28,7 @@ end
 #                          PUT    /users(.:format)               devise/registrations#update
 #                          DELETE /users(.:format)               devise/registrations#destroy
 #                     root GET    /                              flights#new
+#                  profile GET    /profile(.:format)             users#profile
 #                 contacts POST   /contacts(.:format)            contacts#create
 #              new_contact GET    /contacts/new(.:format)        contacts#new
 #             edit_contact GET    /contacts/:id/edit(.:format)   contacts#edit
@@ -40,12 +41,6 @@ end
 #                   flight GET    /flights/:id(.:format)         flights#show
 #                          PATCH  /flights/:id(.:format)         flights#update
 #                          PUT    /flights/:id(.:format)         flights#update
-
-
-
-
-
-
 
 
 
