@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   
   resources :contacts, only: [:new, :create, :show, :edit, :update]
 
-  resources :flights, only: [:new, :create, :show, :edit, :update]
+  resources :flights, only: [:new, :create, :edit, :update]
 
 end
 

@@ -16,6 +16,8 @@ class ContactsController < ApplicationController
 
   def create
     @contact = Contact.create(contact_params)
+    flash[:notice] = "Contact successfully created"
+    # render :new
   end
 
   private

@@ -1,12 +1,4 @@
 class FlightsController < ApplicationController
-  
-  def index
-    @flight = user.flights
-  end
-
-  def show
-    @flight = current_user.flights
-  end
 
   def new
     @flight = Flight.new
