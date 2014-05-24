@@ -8,6 +8,8 @@
 
 <h1>new flight page</h1>
 
+<h2><%= flash[:notice] %></h2>
+
 	<%= form_for @flight do |f| %>
   <%= f.label "Flight #" %>
   <%= f.text_field "flight_number", placeholder: "Flight #" %>

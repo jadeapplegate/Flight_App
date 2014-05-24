@@ -1,4 +1,8 @@
 class FlightsController < ApplicationController
+  
+  def index
+    @flight = user.flights
+  end
 
   def show
     @flight = current_user.flights
@@ -18,7 +22,12 @@ class FlightsController < ApplicationController
         format.json { render json: @flight.errors, status: :unprocessable_entity }
       end
     end
-  end
+
+  # def create 
+  #   @flight = Flight.create(flight_params)
+  #   flash[:notice] = "Flight successfully created"
+  #   render :new
+  # end
 
 private
   def flight_params
