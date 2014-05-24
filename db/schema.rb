@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20140525022005) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "contact_id"
     t.string   "airline_code"
     t.string   "departure_city"
     t.string   "arrival_city"
