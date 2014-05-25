@@ -1,8 +1,16 @@
 class UsersController < ApplicationController
   
   def profile
-    
+    @flights = Flight.all
+    @contacts = Contact.all
+    @contact = Contact.new
   end
+
+
+
+
+
+
 
   # private
   # def flight_params

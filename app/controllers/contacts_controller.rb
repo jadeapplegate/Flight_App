@@ -1,23 +1,10 @@
 class ContactsController < ApplicationController
   load_and_authorize_resources
 
-  def index
-    @contact = user.contacts
-  end
-
-  def show
-    @contacts = Contacts.all
-  end
-
-  def new
-    @contact = Contact.new
-
-  end
-
   def create
     @contact = Contact.create(contact_params)
     flash[:notice] = "Contact successfully created"
-    # render :new
+    render :profile
   end
 
   private

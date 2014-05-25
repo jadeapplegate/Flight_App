@@ -10,7 +10,6 @@ Rails.application.routes.draw do
   resources :flights, only: [:new, :create, :edit, :update]
 
 end
-
 #                   Prefix Verb   URI Pattern                    Controller#Action
 #         new_user_session GET    /users/sign_in(.:format)       devise/sessions#new
 #             user_session POST   /users/sign_in(.:format)       devise/sessions#create
@@ -38,8 +37,7 @@ end
 #                  flights POST   /flights(.:format)             flights#create
 #               new_flight GET    /flights/new(.:format)         flights#new
 #              edit_flight GET    /flights/:id/edit(.:format)    flights#edit
-#                   flight GET    /flights/:id(.:format)         flights#show
-#                          PATCH  /flights/:id(.:format)         flights#update
+#                   flight PATCH  /flights/:id(.:format)         flights#update
 #                          PUT    /flights/:id(.:format)         flights#update
 
 
