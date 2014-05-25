@@ -1,7 +1,11 @@
-<h1>User Profile</h1>
+<h1>User Profile Page</h1>
+<h2>Todo: Add Directions For User</h2>
 
+<!-- displays notice when flight created sucessfully -->
 <h2><%= flash[:notice] %></h2>
 
+<!-- new contact form -->
+<div id="add_contact_form">
 	<%= form_for @contact do |f| %>
 	  <%= f.label "First Name:" %>
 	  <%= f.text_field "first_name", placeholder: "Mickey" %>
@@ -12,12 +16,31 @@
 	  <%= f.label "Phone Number:" %>
 	  <%= f.telephone_field "phone", placeholder: "(555)555-1212" %>
 	 
-	  <%= f.submit id: "contactButton" %>
-  <% end %>
+  	<%= f.submit id: "contactButton" %>
+	<% end %>
+</div>
 
 
-<!-- list of all contacts -->
+<!-- displays a list of all contacts for current user -->
+<div id="contacts_list">
+	<p>Your Contacts:</p>
+		<% @contacts.each do |contact| %>
+			<%= contact.first_name %></br>
+		<% end %>
+</div>
 
 
-<!-- list of all flights -->
+<!-- displays a list of all flights for current user -->
+<div id="contacts_list">
+	<p>Your Flights:</p>
+		<% @flights.each do |flight| %>
+			<%= flight.airline_name -%> :
+			<%= flight.flight_number -%> -
+			<%= flight.date_month -%> /
+			<%= flight.date_day -%>/
+			<%= flight.date_year -%>, 
+			<%= flight.departure_airport -%> to 
+			<%= flight.arrival_airport -%></br>
+		<% end %>
+</div>
 
