@@ -1,11 +1,7 @@
 class FlightsController < ApplicationController
-  def show
-    @flight = current_user.flights
-  end
 
   def new
     @flight = Flight.new
-    @flights = Flight.all
   end
 
   def create
@@ -20,8 +16,15 @@ class FlightsController < ApplicationController
     end
   end
 
+  # def create 
+  #   @flight = Flight.create(flight_params)
+  #   flash[:notice] = "Flight successfully created"
+  #   render :new
+  # end
+
 private
   def flight_params
     params.require(:flight).permit(:flight_number, :airline_name, :date_year, :date_month, :date_day, :departure_airport, :arrival_airport, :stops, :departure_time, :arrival_time, :airline_code, :departure_city, :arrival_city)
   end
+
 end
