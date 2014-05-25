@@ -36,7 +36,7 @@ gem 'pry'
 group :development, :test do
   gem 'dotenv-rails'
   gem 'pry-rails'
-  gem 'better_errors'
+  # gem 'better_errors'
   gem 'jasmine'
   gem 'rspec'
   gem 'rspec-rails'
