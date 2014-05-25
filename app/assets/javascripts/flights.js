@@ -11,12 +11,18 @@ $(document).ready(function(){
     var departureDay = $('#flight_date_day').val();
     var departureMonth = $('#flight_date_month').val();
     var departureYear = $('#flight_date_year').val();
+    // var flightNumber = '902';
+    // var airlineCode = 'VX';
+    // var departureDay = '3';
+    // var departureMonth = '6';
+    // var departureYear = '2014';
 
     $.ajax({
       url: "https://api.flightstats.com/flex/schedules/rest/v1/jsonp/flight/" + airlineCode + "/" + flightNumber + "/departing/" + departureYear + "/" + departureMonth + "/" + departureDay + "?appId=" + apiID + "&appKey=" + apiKey,
       method: 'get',
       dataType: "jsonp",
         success: function(data) {
+          // console.log(this.url)
           var airlineName = data.appendix.airlines[0].name;
           var departureAirport = data.appendix.airports[0].name;
           var departureCity = data.appendix.airports[0].city;

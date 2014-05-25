@@ -14,6 +14,7 @@ class FlightsController < ApplicationController
         format.json { render json: @flight.errors, status: :unprocessable_entity }
       end
     end
+  end
 
   # def create 
   #   @flight = Flight.create(flight_params)
