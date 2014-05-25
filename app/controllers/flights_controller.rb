@@ -7,6 +7,7 @@ class FlightsController < ApplicationController
   def create
     @flight = Flight.new flight_params
     @flight.user = current_user
+    binding.pry
     respond_to do |format|
       if @flight.save
         format.json { render json: @flight, status: :created }
