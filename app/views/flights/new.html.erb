@@ -1,3 +1,21 @@
-<%= if can? :manage, @flight %>
-<%= link_to "Edit", edit_flight_path(@flight) %>
-<% end %>
+<%#= if can? :manage, @flight %>
+<%#= link_to "Edit", edit_flight_path(@flight) %>
+<%# end %>
+<body data-api="<%= ENV['API_ID'] %>" data-key="<%= ENV['APP_KEY'] %>">
+
+<%= form_for @flight do |f| %>
+  <%= f.label "Flight #" %>
+  <%= f.text_field "flight_number", placeholder: "Flight #" %>
+  <%= f.label "Airline Code" %>
+  <%= f.text_field "airline_code", placeholder: "Enter two-digit airline code" %>
+  <%= f.label "Date of Departure" %>
+  <%= f.text_field "date_month", placeholder: "Enter month in digit form" %>
+  <%= f.text_field "date_day", placeholder: "Enter day in digit form" %>
+  <%= f.text_field "date_year", placeholder: "Enter year in digit form" %>
+  <%= f.submit id: "flightButton" %>
+  <% end %>
+
+  <div id="flight_info">
+  </div>
+
+

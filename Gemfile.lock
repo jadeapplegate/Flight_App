@@ -29,9 +29,6 @@ GEM
       tzinfo (~> 1.1)
     arel (5.0.1.20140414130214)
     bcrypt (3.1.7)
-    better_errors (1.1.0)
-      coderay (>= 1.0.0)
-      erubis (>= 2.6.6)
     builder (3.2.2)
     cancancan (1.8.0)
     celluloid (0.15.2)
@@ -196,7 +193,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  better_errors
   cancancan
   coffee-rails (~> 4.0.0)
   devise
