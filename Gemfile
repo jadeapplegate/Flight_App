@@ -40,7 +40,7 @@ group :development, :test do
   gem 'jasmine'
   gem 'rspec'
   gem 'rspec-rails'
-
+  gem 'factory_girl_rails'
 end
 
 group :production do
