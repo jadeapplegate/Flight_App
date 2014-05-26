@@ -7,16 +7,16 @@ class FlightsController < ApplicationController
   def create
     @flight = Flight.new flight_params
     @flight.user = current_user
-    mailer_user_address = current_user.email
-    mailer_flight_number = params["flight"]["flight_number"]
-    mailer_airline_name = params["flight"]["airline_name"]
-    mailer_departure_time = params["flight"]["departure_time"]
-    mailer_arrival_time = params["flight"]["arrival_time"]
-    mailer_departure_airport = params["flight"]["departure_airport"]
-    mailer_arrival_airport = params["flight"]["arrival_airport"]
-    mailer_departure_city = params["flight"]["departure_city"]
-    mailer_arrival_city = params["flight"]["arrival_city"]
-    binding.pry
+    address = current_user.email
+    number = params["flight"]["flight_number"]
+    name = params["flight"]["airline_name"]
+    d_time = params["flight"]["departure_time"]
+    a_time = params["flight"]["arrival_time"]
+    d_airport = params["flight"]["departure_airport"]
+    a_airport = params["flight"]["arrival_airport"]
+    d_city = params["flight"]["departure_city"]
+    a_city = params["flight"]["arrival_city"]
+    EmailsWorker.perform_async(address, number, name, d_time, a_time, d_airport, a_airport, d_city, a_city)
     respond_to do |format|
       if @flight.save
         format.json { render json: @flight, status: :created }
