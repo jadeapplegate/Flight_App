@@ -6,5 +6,6 @@ class Contact < ActiveRecord::Base
   validates :email, presence: true
   validates_format_of :email, :with => /\A(\S+)@(.+)\.(\S+)\z/
   validates :phone, presence: true
+  validates_length_of :phone, :minimum => 10
 
 end
