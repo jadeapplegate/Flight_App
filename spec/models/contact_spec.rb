@@ -30,16 +30,23 @@ require 'spec_helper'
       end
     end
 
- describe "when email format is invalid" do
-    it "should be invalid" do
-      addresses = %w[user@foo,com user_at_foo.org example.user@foo.
-                     foo@bar_baz.com foo@bar+baz.com]
-      addresses.each do |invalid_address|
-        user = FactoryGirl.build(:contact, email: 'daffy.com')
-        user.should_not be_valid
-      end      
+      it 'should contain at least 10 characters' do
+        user = FactoryGirl.build(:contact, phone: "5555555").should_not be_valid
+        user = FactoryGirl.build(:contact, phone: "5555555555").should be_valid
+      end
+
+
+   describe "when email format is invalid" do
+      it "should be invalid" do
+        addresses = %w[user@foo,com user_at_foo.org example.user@foo.
+                       foo@bar_baz.com foo@bar+baz.com]
+        addresses.each do |invalid_address|
+          user = FactoryGirl.build(:contact, email: 'daffy.com')
+          user.should_not be_valid
+        end      
+      end
     end
-  end
+
 
 
 end
