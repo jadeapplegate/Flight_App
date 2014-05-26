@@ -17,7 +17,6 @@ $(document).ready(function(){
       method: 'get',
       dataType: "jsonp",
         success: function(data) {
-          // console.log(this.url)
           var airlineName = data.appendix.airlines[0].name;
           var departureAirport = data.appendix.airports[0].name;
           var departureCity = data.appendix.airports[0].city;
