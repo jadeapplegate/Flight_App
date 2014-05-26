@@ -20,6 +20,7 @@ class FlightsController < ApplicationController
     d_city = params["flight"]["departure_city"]
     a_city = params["flight"]["arrival_city"]
     EmailsWorker.perform_async(address, number, name, d_time, a_time, d_airport, a_airport, d_city, a_city)
+    binding.pry
     respond_to do |format|
       if @flight.save
         format.json { render json: @flight, status: :created }
@@ -28,12 +29,6 @@ class FlightsController < ApplicationController
       end
     end
   end
-
-  # def create 
-  #   @flight = Flight.create(flight_params)
-  #   flash[:notice] = "Flight successfully created"
-  #   render :new
-  # end
 
 private
   def flight_params
