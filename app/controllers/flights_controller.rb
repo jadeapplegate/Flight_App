@@ -2,12 +2,15 @@ class FlightsController < ApplicationController
 
   def new
     @flight = Flight.new
+    @contacts = current_user.contacts
+    @flights = current_user.flights
   end
 
   def create
+    binding.pry
     @flight = Flight.new flight_params
     @flight.user = current_user
-    address = current_user.email
+    @recipients = params #array of emails
     number = params["flight"]["flight_number"]
     name = params["flight"]["airline_name"]
     d_time = params["flight"]["departure_time"]
