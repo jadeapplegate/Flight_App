@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1> Flight status for <$= @user.name %></h1>
+
+    <p>Hi <%= @contact.first_name %></p>
+    <p>
+      <%= @user.first_name %> <%= @user.last_name %> will arrive at <%=@flight.arrival_airport %> at the time of <%= @flight.arrival_time %>.
+    </p>
+
+    <p> Thank you for using FlightApp </p>
+  </body>
+</html>
+
+<!-- Basic message for contact flight confirmation. Message should be adjusted to be more human -->
