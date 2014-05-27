@@ -7,8 +7,8 @@ class FlightsController < ApplicationController
   def create
     @flight = Flight.new flight_params
     @flight.user = current_user
-    send_text
     if @flight.save
+      send_text
       flight = @flight
       UserEmailsWorker.perform_async(flight.id, current_user.id)
       recipients = params["flight"]["contacts"]
@@ -38,11 +38,12 @@ class FlightsController < ApplicationController
     @twilio_client = Twilio::REST::Client.new twilio_sid, twilio_token
 
     @twilio_client.account.sms.messages.create(
-      :from => "+1#{4155994592}",  
+      :from => "+1#{4155994592}",
+      :from => "+14155994592", 
+      # +14155994592
       :to => "+1#{6173067739}", 
-      :body => "#{user.first_name} will be flying"
+      :body => "#{current_user.first_name}"
     )
-
   end
 
 private
