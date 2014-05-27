@@ -1,0 +1,28 @@
+<html>
+   <head>
+     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+     <title> WHAT AN EMAIL! </title>
+   </head>
+   <body>
+   <h1>Subject</h1>
+   <h2>Hi, <%=@current_user.full_name %></h2>
+     <p> This is a confirmation for the flight data that you entered.</p>
+     <p> The flight data is as follows </p>
+     <ul>
+       <li><%= @flight.flight_number %></li>
+       <li><%= @flight.airline_name %></li>
+       <li><%= @flight.date_year %>, <%= @flight.date_month %>, <%= @flight.date_day %></li>
+       <li><%= @flight.departure_airport %></li>
+       <li><%= @flight.arrival_airport %></li>
+       <li><%= @flight.stops %></li>
+       <li><%= @flight.departure_time %></li>
+       <li><%= @flight.arriva_time %></li>
+       <li><%= @flight.airline_code %></li>
+       <li><%= @flight.departure_city %></li>
+       <li><%= @flight.arrival_city %></li>
+       <li><%= @flight.flight_number %></li>
+       <li><%= @flight.flight_number %></li>
+   </ul>
+   <p> Thank you for using Flight App </p>
+   </body>
+ </html>
