@@ -6,11 +6,18 @@ $(document).ready(function(){
   $('#flightButton').on('click', function(event){
     event.preventDefault();
     var form = $(this);
+    var chkArray = [];
     var flightNumber = $('#flight_flight_number').val();
     var airlineCode = $('#flight_airline_code').val();
     var departureDay = $('#flight_date_day').val();
     var departureMonth = $('#flight_date_month').val();
     var departureYear = $('#flight_date_year').val();
+        
+    $("#new_flight input:checked").each(function() {
+      chkArray.push($(this).val());
+    });
+
+    var selected = chkArray.join(',') + ",";
 
     $.ajax({
       url: "https://api.flightstats.com/flex/schedules/rest/v1/jsonp/flight/" + airlineCode + "/" + flightNumber + "/departing/" + departureYear + "/" + departureMonth + "/" + departureDay + "?appId=" + apiID + "&appKey=" + apiKey,
@@ -41,7 +48,8 @@ $(document).ready(function(){
               arrival_time: arrivalTime,
               airline_code: airlineCode,
               departure_city: departureCity,
-              arrival_city: arrivalCity }
+              arrival_city: arrivalCity,
+              contacts: chkArray }
             }
           });
         }

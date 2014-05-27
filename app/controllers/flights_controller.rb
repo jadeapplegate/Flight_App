@@ -7,10 +7,8 @@ class FlightsController < ApplicationController
   end
 
   def create
-    binding.pry
     @flight = Flight.new flight_params
     @flight.user = current_user
-    @recipients = params #array of emails
     number = params["flight"]["flight_number"]
     name = params["flight"]["airline_name"]
     d_time = params["flight"]["departure_time"]
@@ -19,7 +17,14 @@ class FlightsController < ApplicationController
     a_airport = params["flight"]["arrival_airport"]
     d_city = params["flight"]["departure_city"]
     a_city = params["flight"]["arrival_city"]
-    EmailsWorker.perform_async(address, number, name, d_time, a_time, d_airport, a_airport, d_city, a_city)
+    @recipients = params["flight"]["contacts"]
+    if @flight.save
+      @recipients.each do |id|
+        contact = Contact.find(id)
+        address = contact.email
+        EmailsWorker.perform_async(address, number, name, d_time, a_time, d_airport, a_airport, d_city, a_city, current_user.id)
+      end
+    end
     respond_to do |format|
       if @flight.save
         format.json { render json: @flight, status: :created }
@@ -28,12 +33,6 @@ class FlightsController < ApplicationController
       end
     end
   end
-
-  # def create 
-  #   @flight = Flight.create(flight_params)
-  #   flash[:notice] = "Flight successfully created"
-  #   render :new
-  # end
 
 private
   def flight_params
