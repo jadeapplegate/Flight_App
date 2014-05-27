@@ -1,6 +1,6 @@
 class Contact < ActiveRecord::Base
   belongs_to :user
-  has_many :flights
+  has_many :contacts_flights
   has_many :flights, through: :contacts_flights
 
 
