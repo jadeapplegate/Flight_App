@@ -2,9 +2,12 @@ class ContactsController < ApplicationController
   # load_and_authorize_resources
 
   def create
-    @contact = Contact.create(contact_params)
-    flash[:notice] = "Contact successfully created"
-    redirect_to "/profile"
+    @contact = Contact.new(contact_params)
+    @contact.user = current_user
+    if @contact.save
+      flash[:notice] = "Contact successfully created"
+      redirect_to "/profile"
+    end
   end
 
   private
