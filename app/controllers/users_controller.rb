@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
   
   def profile
-    @flights = Flight.all
-    @contacts = Contact.all
+    @flight = Flight.new
+    @flights = current_user.flights
+    @contacts = current_user.contacts
     @contact = Contact.new
   end
 

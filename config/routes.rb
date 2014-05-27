@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   root 'flights#new'
 
-  get '/profile', to: 'users#profile'
+  get '/profile', to: 'users#profile', as: 'profile'
   
   resources :contacts, only: [:new, :create, :show, :edit, :update]
 
