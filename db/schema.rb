@@ -52,7 +52,6 @@ ActiveRecord::Schema.define(version: 20140527172405) do
     t.integer  "contact_id"
     t.string   "departure_city"
     t.string   "arrival_city"
-    t.string   "airline_code"
   end
 
   add_index "flights", ["user_id"], name: "index_flights_on_user_id", using: :btree
