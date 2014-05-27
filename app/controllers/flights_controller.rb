@@ -7,6 +7,7 @@ class FlightsController < ApplicationController
   def create
     @flight = Flight.new flight_params
     @flight.user = current_user
+    send_text
     if @flight.save
       flight = @flight
       UserEmailsWorker.perform_async(flight.id, current_user.id)
@@ -25,6 +26,23 @@ class FlightsController < ApplicationController
         format.json { render json: @flight.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def send_text
+    number_to_send_to = +16173067739
+
+    twilio_sid=ENV['TWILIO_SID']
+    twilio_token=ENV['TWILIO_TOKEN']
+    twilio_phone_number= +14155994592
+
+    @twilio_client = Twilio::REST::Client.new twilio_sid, twilio_token
+
+    @twilio_client.account.sms.messages.create(
+      :from => "+1#{4155994592}",  
+      :to => "+1#{6173067739}", 
+      :body => "#{user.first_name} will be flying"
+    )
+
   end
 
 private
