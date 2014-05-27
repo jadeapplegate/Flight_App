@@ -6,4 +6,13 @@ class SiteMailer < ActionMailer::Base
     @flight = Flight.find(flight_id)
     mail(to: address)
   end
+<<<<<<< HEAD
+=======
+
+  def confirm_user(flight_id, current_user_id)
+    @flight = Flight.find(flight_id)
+    @current_user = User.find(current_user_id)
+    mail(to: @current_user.email, subject: "Flight confirmation")
+  end
+>>>>>>> corrected user_email_worker, and formatted confirm_user method parameters
 end
