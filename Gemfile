@@ -34,7 +34,6 @@ gem 'pry'
 
 gem 'twilio-ruby'
 
-
 group :development, :test do
   gem 'dotenv-rails'
   gem 'pry-rails'
