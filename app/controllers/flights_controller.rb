@@ -2,8 +2,8 @@ class FlightsController < ApplicationController
 
   def new
     @flight = Flight.new
-    @contacts = current_user.contacts
-    @flights = current_user.flights
+    # @contacts = current_user.contacts
+    # @flights = current_user.flights
   end
 
   def create
