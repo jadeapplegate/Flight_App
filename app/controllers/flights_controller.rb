@@ -2,8 +2,6 @@ class FlightsController < ApplicationController
 
   def new
     @flight = Flight.new
-    @contacts = current_user.contacts
-    @flights = current_user.flights
   end
 
   def create
@@ -11,9 +9,12 @@ class FlightsController < ApplicationController
     @flight.user = current_user
     if @flight.save
       flight = @flight
-      # EmailsWorker.perform(current_user.id, flight.id)
+      UserEmailsWorker.perform_async(flight.id, current_user.id)
       recipients = params["flight"]["contacts"]
       recipients.each do |id|
+        c = ContactsFlights.new(contact_id: id, flight_id: flight.id)
+        c.save
+        binding.pry
         contact = Contact.find(id)
         address = contact.email
         ContactsEmailsWorker.perform_async(address, flight.id, current_user.id)
@@ -32,5 +33,7 @@ private
   def flight_params
     params.require(:flight).permit(:flight_number, :airline_name, :date_year, :date_month, :date_day, :departure_airport, :arrival_airport, :stops, :departure_time, :arrival_time, :airline_code, :departure_city, :arrival_city)
   end
+
+# ContactsFlights.where(["flight_id = ?", 21]).map { |flight| flight.contact }
 
 end

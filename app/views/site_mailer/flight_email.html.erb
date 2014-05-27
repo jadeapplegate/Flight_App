@@ -1,11 +1,10 @@
 <html>
   <head>
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
-    <title> WHAT AN EMAIL! </title>
   </head>
   <body>
-  <h1>Subject</h1>
-  <h2><%= @current_user.full_name %> want to let you know they're flying!</h2>
-    <p> <%= @current_user.full_name %> wanted you to know that they will be flying <%=@name%> Airlines blah blah blah</p>
+  <h1><%= @user.full_name %> want to let you know they're flying!</h1>
+    <p> <%= @user.full_name %> wanted you to know that they will be flying <%=@flight.airline_name%> Airlines on <%= @flight.date_month %>/<%= @flight.date_day %>/<%= @flight.date_year %>.</p>
+    <p> <%= @user.first_name %> will be leaving <%= @flight.departure_city %>, from <%= @flight.departure_airport %> at <%= @flight.departure_time.localtime %>, and arriving in <%= @flight.arrival_city %>, at <%= @flight.arrival_airport %> at approximately <%= @flight.arrival_time.localtime %></p>
   </body>
 </html>
