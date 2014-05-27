@@ -2,7 +2,8 @@ class SiteMailer < ActionMailer::Base
   default to: @recipients
   default from: ENV['EMAIL_FROM_ADDRESS']
   
-  def person_email(number, name, d_time, a_time, d_airport, a_airport, d_city, a_city)
+  def person_email(number, name, d_time, a_time, d_airport, a_airport, d_city, a_city, current_user_id)
+    @current_user = User.find(current_user_id)
     @number = number
     @name = name
     @departure_time = d_time

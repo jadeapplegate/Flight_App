@@ -7,7 +7,6 @@ class FlightsController < ApplicationController
   end
 
   def create
-    binding.pry
     @flight = Flight.new flight_params
     @flight.user = current_user
     @recipients = params #array of emails
@@ -19,8 +18,7 @@ class FlightsController < ApplicationController
     a_airport = params["flight"]["arrival_airport"]
     d_city = params["flight"]["departure_city"]
     a_city = params["flight"]["arrival_city"]
-    EmailsWorker.perform_async(address, number, name, d_time, a_time, d_airport, a_airport, d_city, a_city)
-    binding.pry
+    EmailsWorker.perform_async(address, number, name, d_time, a_time, d_airport, a_airport, d_city, a_city, current_user.id)
     respond_to do |format|
       if @flight.save
         format.json { render json: @flight, status: :created }
