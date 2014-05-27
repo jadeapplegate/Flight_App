@@ -1,8 +1,7 @@
 class SiteMailer < ActionMailer::Base
-  default to: @recipients
   default from: ENV['EMAIL_FROM_ADDRESS']
   
-  def person_email(number, name, d_time, a_time, d_airport, a_airport, d_city, a_city, current_user_id)
+  def flight_email(address, number, name, d_time, a_time, d_airport, a_airport, d_city, a_city, current_user_id)
     @current_user = User.find(current_user_id)
     @number = number
     @name = name
@@ -12,6 +11,6 @@ class SiteMailer < ActionMailer::Base
     @arrival_airport = a_airport
     @departure_city = d_city
     @arrival_city = a_city
-    mail(subject: subject, body: body)
+    mail(to: address)
   end
 end

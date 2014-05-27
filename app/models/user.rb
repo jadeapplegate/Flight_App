@@ -13,5 +13,9 @@ class User < ActiveRecord::Base
   validates_length_of :last_name, :minimum => 2
   validates :email, presence: true
   validates_format_of :email, :with => /\A(\S+)@(.+)\.(\S+)\z/
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
   
 end
