@@ -24,6 +24,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
 gem 'sidekiq'
+gem 'sidetiq'
 
 gem 'cancancan'
 
@@ -34,7 +35,6 @@ gem 'pry'
 group :development, :test do
   gem 'dotenv-rails'
   gem 'pry-rails'
-  # gem 'better_errors'
   gem 'jasmine'
   gem 'rspec'
   gem 'rspec-rails'

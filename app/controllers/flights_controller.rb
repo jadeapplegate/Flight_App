@@ -11,7 +11,7 @@ class FlightsController < ApplicationController
     @flight.user = current_user
     if @flight.save
       flight = @flight
-      # EmailsWorker.perform(current_user.id, flight.id)
+      UserEmailsWorker.perform_async(flight.id, current_user.id)
       recipients = params["flight"]["contacts"]
       recipients.each do |id|
         contact = Contact.find(id)
