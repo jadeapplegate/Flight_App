@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1> Flight status for <$= @user.name %></h1>
+
+    <p>Hi <%= @user.first_name %></p>
+    <p>
+      This is a message to inform you of a change in the flight schedule.
+    </p>
+    <p>The following information is the new details for the flight.</p>
+    <ul>
+      <li>Flight<%= @flight.flights_number %></li>
+      <li><%= @flight.airline_name %></li>
+      <li><%= @flight.date_year %></li>
+      <li><%= @flight.date_month %></li>
+      <li><%= @flight.date_day %></li>
+      <li><%= @flight.departure_airport %></li>
+      <li><%= @flight.arrival_airport %></li>
+      <li><%= @flight.stops %></li>
+      <li><%= @flight.departure_time %></li>
+      <li><%= @flight.arrival_time %></li>
+      <li><%= @flight.departure_city %></li>
+      <li><%= @flight.arrival_city %></li>
+    </ul>
+
+    <p> Thank you for using FlightApp </p>
+  </body>
+</html>
+
+<!-- All possible flight data that can possibly used is listed for now. Message should be adjusted to be more human -->
