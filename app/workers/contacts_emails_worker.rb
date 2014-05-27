@@ -1,6 +1,5 @@
 class ContactsEmailsWorker
   include Sidekiq::Worker
-  include Sidetiq::Schedulable
 
   sidekiq_options retry: false
   
