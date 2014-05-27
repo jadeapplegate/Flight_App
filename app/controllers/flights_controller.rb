@@ -10,16 +10,15 @@ class FlightsController < ApplicationController
     @flight = Flight.new flight_params
     @flight.user = current_user
     if @flight.save
-      EmailsWorker.perform_user_email_async(current_user.id, flight.id)
-      recipients = params["flight"]["contacts"]
       flight = @flight
+      # EmailsWorker.perform(current_user.id, flight.id)
+      recipients = params["flight"]["contacts"]
       recipients.each do |id|
         contact = Contact.find(id)
         address = contact.email
-        EmailsWorker.perform_contact_email_async(address, flight.id, current_user.id)
+        ContactsEmailsWorker.perform_async(address, flight.id, current_user.id)
       end
-    end    
-
+    end
     respond_to do |format|
       if @flight.save
         format.json { render json: @flight, status: :created }
