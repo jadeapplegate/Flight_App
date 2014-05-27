@@ -1,5 +1,7 @@
 class Contact < ActiveRecord::Base
   belongs_to :user
+  has_many :flights
+  has_many :flights, through: :contacts_flights
 
 
   validates :first_name, presence: true

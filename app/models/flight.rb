@@ -1,6 +1,7 @@
 class Flight < ActiveRecord::Base
   belongs_to :user
-  belongs_to :contact
+  has_many :contacts_flights
+  has_many :flights, through: :contacts_flights
 
   validates :flight_number, presence: true
   validates_length_of :flight_number, :minimum => 2
