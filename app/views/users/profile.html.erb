@@ -27,7 +27,8 @@
 <div class="panel panel-primary" id="contacts_list">
 	<div class="panel-heading" id="contacts_list">Your Contacts:</div>
 		<% @contacts.each do |contact| %>
-			<%= contact.first_name %></br>
+			<%= contact.full_name %>
+			<%= contact.email %><br>
 		<% end %>
 </div>
 
