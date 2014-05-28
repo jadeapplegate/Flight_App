@@ -1,8 +1,7 @@
 class ContactsTextsWorker
   include Sidekiq::Worker
-
   include Sidetiq::Schedulable
-end  
+ 
 # #   sidekiq_options retry: false
   
 # #   def perform(current_user_id)
@@ -60,10 +59,9 @@ end
 #     :body => 'please please work'
     )
 
+  def perform(contact_id)
+    TwilioTexter.send_text(contact_id)
+  end
 
-
-
-
-
-
+end
 
