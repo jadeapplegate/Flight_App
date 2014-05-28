@@ -20,6 +20,46 @@ html {
 	padding-top: 100px;
 	padding-right: 130px;
 	padding-bottom: 100px;
-/*	background-color: F2FDF7;*/
 }
+
+body {
+	background-color: F2FDF7;
+/*	background-image: url(../images/light_grey.png);*/
+} 
+
+.instructions {
+	font-style: italic;
+}
+
+.new_flight_form,  {
+	padding: 10px;
+}
+
+.add_contact_form {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.navbar-fixed-bottom {
+	opacity: 50%;
+}
+
+.contact_submit {
+	padding-bottom: 40px;
+}
+
+.form_field {
+	border-radius: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
 
