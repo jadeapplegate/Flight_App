@@ -7,10 +7,7 @@ class ContactsTextsWorker
   def perform(contact_id)
     TwilioTexter.send_text(contact_id)
   end
-
 end
-
-
 
 
 
