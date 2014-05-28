@@ -4,8 +4,8 @@ class ContactsTextsWorker
  
   sidekiq_options retry: false
 
-  def perform(contact_id)
-    TwilioTexter.send_text(contact_id)
+  def perform #(contact_id)
+    TwilioTexter.send_text  #(contact_id)
   end
 end
 
