@@ -26,6 +26,8 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'sidekiq'
 gem 'sidetiq', git: 'https://github.com/tobiassvn/sidetiq.git'
 
+gem 'sidetiq', git: 'https://github.com/tobiassvn/sidetiq.git'
+
 gem 'cancancan'
 
 gem 'devise'

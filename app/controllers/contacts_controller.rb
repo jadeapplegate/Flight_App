@@ -1,6 +1,10 @@
 class ContactsController < ApplicationController
   # load_and_authorize_resources
 
+  def new
+    @contact = current_user.contacts.new 
+  end
+
   def create
     @contact = Contact.new(contact_params)
     @contact.user = current_user
