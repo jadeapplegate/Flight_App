@@ -5,13 +5,13 @@ $(document).ready(function(){
 
   $('#flightButton').on('click', function(event){
     event.preventDefault();
-    var form = $(this);
     var chkArray = [];
     var flightNumber = $('#flight_flight_number').val();
     var airlineCode = $('#flight_airline_code').val();
     var departureDay = $('#flight_date_day').val();
     var departureMonth = $('#flight_date_month').val();
     var departureYear = $('#flight_date_year').val();
+    $('#flight_form').slideToggle("slow");
         
     $("#new_flight input:checked").each(function() {
       chkArray.push($(this).val());
@@ -22,6 +22,7 @@ $(document).ready(function(){
     $.ajax({
       url: "https://api.flightstats.com/flex/schedules/rest/v1/jsonp/flight/" + airlineCode + "/" + flightNumber + "/departing/" + departureYear + "/" + departureMonth + "/" + departureDay + "?appId=" + apiID + "&appKey=" + apiKey,
       method: 'get',
+      timeout: 5000,
       dataType: "jsonp",
         success: function(data) {
           var airlineName = data.appendix.airlines[0].name;
@@ -52,8 +53,28 @@ $(document).ready(function(){
               contacts: chkArray }
             }
           });
-        }
+        $('.completed_flight_info').append("<ul>" + airlineName + " Flight # " + flightNumber + " has been added</ul>");
+        $('.completed_flight_info').append("<button id='addAnotherFlightButton'>Add Another Flight</button>");
+        $('.completed_flight_info').append("<button id='goToMyProfile' method='get' action='/profile'>Go to Your Profile</button>");
+        },
+        error: function() {
+          $('.completed_flight_info').append("<h1>" + "The information you entered was invalid" + "</h1>");
+          $('.completed_flight_info').append("<button id='addAnotherFlightButton'>Try Again</button>");
+          $('.completed_flight_info').append("<button id='goToMyProfile' method='get' action='/profile'>Go to Your Profile</button>");
+      }
     });
     $(':text').val('');
+    $('#flight_airline_code').find('option:first').attr('selected', 'selected');
+    $('#flight_date_year').find('option:first').attr('selected', 'selected');
+    $('#flight_date_month').find('option:first').attr('selected', 'selected');
+    $('#flight_date_day').find('option:first').attr('selected', 'selected');
+
+  });
+  $('.completed_flight_info').on('click', '#addAnotherFlightButton', function() {
+    $('.completed_flight_info').slideToggle("slow");
+    $('#flight_form').slideToggle("slow");
+  });
+  $('.completed_flight_info').on('click', '#goToMyProfile', function() {
+    window.location = '/profile';
   });
 });

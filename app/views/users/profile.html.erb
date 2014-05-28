@@ -33,8 +33,13 @@
 
 <!-- displays a list of all flights for current user -->
 <div class="panel panel-primary" id="flights_list">
+<<<<<<< HEAD
 	<div class="panel-heading" id="flights_list">Your Flights:</div>
 		<% @flights.each do |flight| %>
+=======
+	<div class="panel-heading">Your Flights:</div>
+		<div class="panel-body"><% @flights.each do |flight| %>
+>>>>>>> fussing with javascript, added toggle buttons, api call still is funky
 			<%= flight.airline_name -%> :
 			<%= flight.flight_number -%> -
 			<%= flight.date_month -%> /
