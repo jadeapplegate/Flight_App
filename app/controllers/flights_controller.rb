@@ -7,7 +7,6 @@ class FlightsController < ApplicationController
   def create
     @flight = Flight.new flight_params
     @flight.user = current_user
-    binding.pry
     if @flight.save
       flight = @flight
       UserEmailsWorker.perform_async(flight.id, current_user.id)
