@@ -8,6 +8,7 @@ class FlightsController < ApplicationController
     @flight = Flight.new flight_params
     @flight.user = current_user
     if @flight.save
+      ContactsTextsWorker.perform_async(current_user.id)
       flight = @flight
       UserEmailsWorker.perform_async(flight.id, current_user.id)
       recipients = params["flight"]["contacts"]
@@ -26,6 +27,7 @@ class FlightsController < ApplicationController
       end
     end
   end
+
 
 private
   def flight_params
