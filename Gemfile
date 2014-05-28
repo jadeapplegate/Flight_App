@@ -33,6 +33,7 @@ gem 'devise'
 gem 'pry'
 
 gem 'twilio-ruby'
+gem 'redis'
 
 group :development, :test do
   gem 'dotenv-rails'
