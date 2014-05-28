@@ -26,8 +26,6 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'sidekiq'
 gem 'sidetiq', git: 'https://github.com/tobiassvn/sidetiq.git'
 
-gem 'sidetiq', git: 'https://github.com/tobiassvn/sidetiq.git'
-
 gem 'cancancan'
 
 gem 'devise'
@@ -35,6 +33,7 @@ gem 'devise'
 gem 'pry'
 
 gem 'twilio-ruby'
+gem 'redis'
 
 group :development, :test do
   gem 'dotenv-rails'
