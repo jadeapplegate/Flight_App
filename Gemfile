@@ -30,8 +30,6 @@ gem 'cancancan'
 
 gem 'devise'
 
-gem 'pry'
-
 gem 'twilio-ruby'
 gem 'redis'
 
@@ -42,6 +40,7 @@ group :development, :test do
   gem 'rspec'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+  gem 'pry'
 end
 
 group :production do
