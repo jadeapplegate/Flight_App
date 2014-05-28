@@ -7,16 +7,19 @@ class FlightsController < ApplicationController
   def create
     @flight = Flight.new flight_params
     @flight.user = current_user
+    binding.pry
     if @flight.save
-      ContactsTextsWorker.perform_async(current_user.id)
       flight = @flight
       UserEmailsWorker.perform_async(flight.id, current_user.id)
       recipients = params["flight"]["contacts"]
-      recipients.each do |id|
-        ContactsFlights.create(contact_id: id, flight_id: flight.id)
-        contact = Contact.find(id)
-        address = contact.email
-        ContactsEmailsWorker.perform_async(address, flight.id, current_user.id, contact.id)
+      if recipients != nil
+        recipients.each do |id|
+          ContactsFlights.create(contact_id: id, flight_id: flight.id)
+          ContactsTextsWorker.perform_async #(id)
+          contact = Contact.find(id)
+          address = contact.email
+          ContactsEmailsWorker.perform_async(address, flight.id, current_user.id, contact.id)
+        end
       end
     end
     respond_to do |format|

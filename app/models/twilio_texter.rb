@@ -8,6 +8,7 @@ class TwilioTexter
   def self.send_text #(contact_id)
     #contact=Contact.find(contact_id)
 
+
     sms = @twilio_client.account.sms.messages.create(
       :body => "it works",
       :to => '+16173067739', #contact.phone 
