@@ -14,4 +14,17 @@ class Flight < ActiveRecord::Base
   validates :date_year, presence: true
   validates_length_of :date_year, :is => 4
 
+  def flights_today
+    todays_flights = Flight.where("departure_time BETWEEN ? AND ?", DateTime.current.beginning_of_day, DateTime.tomorrow.beginning_of_day)
+    # ContactsFlights.where(["flight_id = ?", 21]).map { |flight| flight.contact }
+    todays_flights.each do |flight|
+      flight_id = flight.id 
+      todays_contacts = ContactsFlights.where(["flight_id = ?", flight_id]).map { |flight| flight.contact }
+      todays_contacts.each do |contact|
+        contact_id = contact.id
+        DailyEmailsWorker.perform_async(flight_id, contact_id)
+      end
+    end
+  end
+
 end

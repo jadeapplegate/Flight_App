@@ -1,8 +1,8 @@
 class DailyEmailsWorker
   include Sidekiq::Worker
-  include Sidetiq::Schedulable
+  sidekiq_options retry: false
   
-  def perform
+  def perform(flight_id, contact_id)
     SiteMailer.daily_email(flight_id, contact_id).deliver
   end
 end

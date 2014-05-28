@@ -12,12 +12,10 @@ class FlightsController < ApplicationController
       UserEmailsWorker.perform_async(flight.id, current_user.id)
       recipients = params["flight"]["contacts"]
       recipients.each do |id|
-        c = ContactsFlights.new(contact_id: id, flight_id: flight.id)
-        c.save
-        binding.pry
+        ContactsFlights.create(contact_id: id, flight_id: flight.id)
         contact = Contact.find(id)
         address = contact.email
-        ContactsEmailsWorker.perform_async(address, flight.id, current_user.id)
+        ContactsEmailsWorker.perform_async(address, flight.id, current_user.id, contact.id)
       end
     end
     respond_to do |format|
