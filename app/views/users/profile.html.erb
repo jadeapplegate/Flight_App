@@ -24,8 +24,8 @@
 
 
 <!-- displays a list of all contacts for current user -->
-<div id="contacts_list">
-	<p>Your Contacts:</p>
+<div class="panel panel-primary" id="contacts_list">
+	<div class="panel-heading" id="contacts_list">Your Contacts:</div>
 		<% @contacts.each do |contact| %>
 			<%= contact.first_name %></br>
 		<% end %>
@@ -33,9 +33,9 @@
 
 
 <!-- displays a list of all flights for current user -->
-<div id="contacts_list">
-	<p>Your Flights:</p>
-		<% @flights.each do |flight| %>
+<div class="panel panel-primary" id="flights_list">
+	<div class="panel-heading">Your Flights:</div>
+		<div class="panel-body><% @flights.each do |flight| %>
 			<%= flight.airline_name -%> :
 			<%= flight.flight_number -%> -
 			<%= flight.date_month -%> /
@@ -44,5 +44,9 @@
 			<%= flight.departure_airport -%> to 
 			<%= flight.arrival_airport -%></br>
 		<% end %>
+	</div>
 </div>
+
+
+
 
