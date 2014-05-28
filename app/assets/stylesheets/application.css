@@ -23,3 +23,10 @@ html {
 /*	background-color: F2FDF7;*/
 }
 
+.instructions {
+	font-style: italic;
+}
+
+.new_flight_form, .add_contact_form {
+	padding: 10px;
+}

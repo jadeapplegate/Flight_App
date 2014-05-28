@@ -3,11 +3,13 @@
 <%# end %>
 <body data-api="<%= ENV['API_ID'] %>" data-key="<%= ENV['APP_KEY'] %>">
 
-<h1>Add Flight (need instructions for user)</h1>
+<div class="instructions">
+  <h2>Add your flight info and select the contact you'd like to notify:</h2>
+</div>
 
-<h2><%= flash[:notice] %></h2>
+<!-- <h2><%#= flash[:notice] %></h2> -->
 
-
+<div class="new_flight_form">
 <% if current_user %> 
 	<%= form_for @flight do |f| %>
     <div class="flight_info">
@@ -25,6 +27,7 @@
       <%= f.collection_check_boxes(:contact_id, current_user.contacts, :id, :full_name) %>
       <!-- loop through and add li for each contact, or padding on either side of checkbox -->
     </div>
+  </div>
     <div class="submit">
       <%= f.submit class: 'btn btn-success btn-sm rounded', id: "flightButton" %>
     </div>

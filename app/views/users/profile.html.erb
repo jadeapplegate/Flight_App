@@ -1,8 +1,10 @@
 
-<h2>Todo: Add Directions For User</h2>
+<div class="instructions">
+	<h2>Add a new contact:</h2>
+</div>
 
 <!-- displays notice when flight created sucessfully -->
-<h2><%= flash[:notice] %></h2>
+<!-- <h2><%#= flash[:notice] %></h2> -->
 
 <!-- new contact form -->
 <div id="add_contact_form">
@@ -34,8 +36,8 @@
 
 <!-- displays a list of all flights for current user -->
 <div class="panel panel-primary" id="flights_list">
-	<div class="panel-heading">Your Flights:</div>
-		<div class="panel-body><% @flights.each do |flight| %>
+	<div class="panel-heading" id="flights_list">Your Flights:</div>
+		<% @flights.each do |flight| %>
 			<%= flight.airline_name -%> :
 			<%= flight.flight_number -%> -
 			<%= flight.date_month -%> /
