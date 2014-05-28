@@ -1,0 +1,11 @@
+Subject: Just a reminder, <%= @user.full_name %> is flying today!
+===============================================
+
+<%= @user.full_name %> wanted to remind you that their flight is today. Here is the information regarding their flight one last time. 
+
+<%= @flight.airline_name %> Flight # <%= @flight.flight_number %>
+Leaving <%= @flight.departure_city %>, from <%= @flight.departure_airport %>
+Flying out on <%= @flight.date_month %>/<%= @flight.date_day %>/<%= @flight.date_year %> at: <%= @flight.departure_time.localtime %> 
+<%= @flight.stops %> stops
+Arriving in <%= @flight.arrival_city %>, at <%= @flight.arrival_airport %> 
+Arrival Time: <%= @flight.arrival_time %>
