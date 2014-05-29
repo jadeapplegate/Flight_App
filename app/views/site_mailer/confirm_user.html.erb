@@ -1,12 +1,12 @@
 <html>
     <head>
       <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
-      <title> User confirmation </title>
+      <title> User Confirmation </title>
     </head>
     <body>
     <h1>Hi, <%=@user.full_name %></h1>
       <p> This is a confirmation for the flight data that you entered.</p>
-      <p> The flight data is as follows </p>
+      <p> The flight data is as follows: </p>
       <ul>
         <li><%= @flight.airline_name %> Flight # <%= @flight.flight_number %></li>
         <li>Leaving <%= @flight.departure_city %>, from <%= @flight.departure_airport %></li>
@@ -15,6 +15,6 @@
         <li>Arriving in <%= @flight.arrival_city %>, at <%= @flight.arrival_airport %> </li>
         <li>Arrival Time: <%= @flight.arrival_time %></li>
     </ul>
-    <p> Thank you for using FlightShare </p>
+    <p> Thank you for using FlightShare! </p>
     </body>
   </html>
