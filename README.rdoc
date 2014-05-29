@@ -5,23 +5,23 @@
 <LINK TO HEROKU SITE> 
 
 User can:
-- create an account, sign in/out
-- create a profile
-- add contacts to profile
-- view all contacts and scheduled flights
-- add a new flight (flight number, airline, date), and select contact to notify
+ - create an account, sign in/out
+ - create a profile
+ - add contacts to profile
+ - view all contacts and scheduled flights
+ - add a new flight (flight number, airline, date), and select contact to notify
 
 Contact can:
-- receive a travel notification from the user via email and text
+ - receive a travel notification from the user via email and text
 
 APIs used:
-- FlightStats (http://www.flightstats.com/)
-- Twilio (www.twilio.com)
+ - FlightStats (http://www.flightstats.com/)
+ - Twilio (www.twilio.com)
 
 Technologies used:
  - Javascript, jQuery, Ruby/Rails
 
- Gems used: 
+Gems used: 
  - sidekiq
  - sidetiq
  - cancancan
@@ -31,15 +31,18 @@ Technologies used:
  - unicorn
  - foreman
 
- Model Relationships: 
+Model Relationships: 
  - contact: belongs_to :user, has_many :contacts_flights, has_many :flights, through: :contacts_flights
  - flight: belongs_to :user, has_many :contacts_flights, has_many :contacts, through: :contacts_flights
  - contacts_flights: belongs_to :flight, belongs_to :contact
  - user: has_many :flights, has_many :contacts
 
 Authors:
-- https://github.com/jadeapplegate
-- https://github.com/Joshua-Pearson
-- https://github.com/hhuang2088
+ - https://github.com/jadeapplegate
+ - https://github.com/Joshua-Pearson
+ - https://github.com/hhuang2088
+
+
+
 
 
