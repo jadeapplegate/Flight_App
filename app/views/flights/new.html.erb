@@ -36,7 +36,24 @@
   <div class="completed_flight_info">
   </div>
 <% else %>
-  <h1> INSTRUCTIONS FOR APP </h1>
+  <div class="row">
+    <div class="col-xs-4 col-xs-offset-8">
+      <h2> How it works </h2>
+      <h3> Sign up </h3>
+      <h3> Add Contacts </h3>
+      <h3> Add your flight </h3>
+      <h3> FlightShare takes care of the rest </h3>
+<!--       <h3> FlightShare shares your travel itinerary with your selected contact(s) via email and text notifications.<br><br> </h3>
+ -->    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-2">
+      <h4>
+        <%= link_to "Sign up", new_user_registration_path %> or
+        <%= link_to "sign in", new_user_session_path %> to begin.
+      </h4>
+    </div>
+  </div>
 <% end %>
 
 

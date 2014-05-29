@@ -1,6 +1,6 @@
 == README
 
-<APP NAME> shares your travel itinerary with your selected contact(s) via email and text notifications.
+FlightShare shares your travel itinerary with your selected contact(s) via email and text notifications.
 
 <LINK TO HEROKU SITE> 
 
