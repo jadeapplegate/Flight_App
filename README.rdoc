@@ -31,8 +31,15 @@ Technologies used:
  - unicorn
  - foreman
 
- ERD:
- - <add model relationships here>
- 
+ Model Relationships: 
+ - contact: belongs_to :user, has_many :contacts_flights, has_many :flights, through: :contacts_flights
+ - flight: belongs_to :user, has_many :contacts_flights, has_many :contacts, through: :contacts_flights
+ - contacts_flights: belongs_to :flight, belongs_to :contact
+ - user: has_many :flights, has_many :contacts
+
+Authors:
+- https://github.com/jadeapplegate
+- https://github.com/Joshua-Pearson
+- https://github.com/hhuang2088
 
 
