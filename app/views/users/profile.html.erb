@@ -1,71 +1,73 @@
-
-<div class="instructions">
-	<h2>Add a new contact:</h2>
-</div>
-
-<!-- displays notice when flight created sucessfully -->
-<!-- <h2><%#= flash[:notice] %></h2> -->
-
-	<!-- new contact form -->
-<div class='clearfix'>
-	<div class="add_contact_form col-md-6">
-		<%= form_for @contact do |f| %>
-	  	<div class="col-md-3">
-	 		 	<%= f.label "First Name:" %>
-	  	</div>
-	  	<div class="col-md-9">
-	 	  	<%= f.text_field "first_name", placeholder: "Mickey", class:'form_field' %>
-		  </div>
-	  	<div class="col-md-3">
-			  <%= f.label "Last Name:" %>
-	  	</div>
-	  	<div class="col-md-9">
-			  <%= f.text_field "last_name", placeholder: "Mouse", class:'form_field' %>
-			</div>
-	  	<div class="col-md-3">
-		  	<%= f.label "Email:" %>
-	  	</div>
-	  	<div class="col-md-9">
-		  	<%= f.text_field "email", placeholder: "mickey@mouse.com", class:'form_field' %>
-		  </div>
-	  	<div class="col-md-3">
-			  <%= f.label "Phone:" %>
-	  	</div>
-	  	<div class="col-md-9">
-			  <%= f.telephone_field "phone", placeholder: "(555)555-1212", class:'form_field' %>
-			</div>
-	  	<div class="col-md-3">
-			</div>
-		 	<div class="contact_submit col-md-9">	
-	  		<%= f.submit class: 'btn btn-success btn-sm rounded', id: "contactButton" %>
-	    </div>
-		<% end %>
+<%= if current_user %>
+	<div class="instructions">
+		<h2>Add a new contact:</h2>
 	</div>
 
-	<!-- displays a list of all contacts for current user -->
-	<div class="panel panel-primary col-md-6" id="contacts_list" >
-		<div class="panel-heading" id="contacts_list">Your Contacts:</div>
-			<% @contacts.each do |contact| %>
-				<%= contact.full_name %>
-				<%= contact.email %><br>
+	<!-- displays notice when flight created sucessfully -->
+	<!-- <h2><%#= flash[:notice] %></h2> -->
+
+		<!-- new contact form -->
+	<div class='clearfix'>
+		<div class="add_contact_form col-md-6">
+			<%= form_for @contact do |f| %>
+		  	<div class="col-md-3">
+		 		 	<%= f.label "First Name:" %>
+		  	</div>
+		  	<div class="col-md-9">
+		 	  	<%= f.text_field "first_name", placeholder: "Mickey", class:'form_field' %>
+			  </div>
+		  	<div class="col-md-3">
+				  <%= f.label "Last Name:" %>
+		  	</div>
+		  	<div class="col-md-9">
+				  <%= f.text_field "last_name", placeholder: "Mouse", class:'form_field' %>
+				</div>
+		  	<div class="col-md-3">
+			  	<%= f.label "Email:" %>
+		  	</div>
+		  	<div class="col-md-9">
+			  	<%= f.text_field "email", placeholder: "mickey@mouse.com", class:'form_field' %>
+			  </div>
+		  	<div class="col-md-3">
+				  <%= f.label "Phone:" %>
+		  	</div>
+		  	<div class="col-md-9">
+				  <%= f.telephone_field "phone", placeholder: "(555)555-1212", class:'form_field' %>
+				</div>
+		  	<div class="col-md-3">
+				</div>
+			 	<div class="contact_submit col-md-9">	
+		  		<%= f.submit class: 'btn btn-success btn-sm rounded', id: "contactButton" %>
+		    </div>
 			<% end %>
-	</div>
-</div>
+		</div>
 
-<!-- displays a list of all flights for current user -->
-<div class="panel panel-primary" id="flights_list">
-	<div class="panel-heading" id="flights_list">Your Flights:</div>
-		<% @flights.each do |flight| %>
-			<%= flight.airline_name -%> :
-			<%= flight.flight_number -%> -
-			<%= flight.date_month -%> /
-			<%= flight.date_day -%>/
-			<%= flight.date_year -%>, 
-			<%= flight.departure_airport -%> to 
-			<%= flight.arrival_airport -%></br>
-		<% end %>
+		<!-- displays a list of all contacts for current user -->
+		<div class="panel panel-primary col-md-6" id="contacts_list" >
+			<div class="panel-heading" id="contacts_list">Your Contacts:</div>
+				<% @contacts.each do |contact| %>
+					<%= contact.full_name %>
+					<%= contact.email %><br>
+				<% end %>
+		</div>
 	</div>
-</div>
+
+	<!-- displays a list of all flights for current user -->
+	<div class="panel panel-primary" id="flights_list">
+		<div class="panel-heading" id="flights_list">Your Flights:</div>
+			<% @flights.each do |flight| %>
+				<%= flight.airline_name -%> :
+				<%= flight.flight_number -%> -
+				<%= flight.date_month -%> /
+				<%= flight.date_day -%>/
+				<%= flight.date_year -%>, 
+				<%= flight.departure_airport -%> to 
+				<%= flight.arrival_airport -%></br>
+			<% end %>
+		</div>
+	</div>
+<% else %>
+	
 
 
 
