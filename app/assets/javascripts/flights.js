@@ -11,12 +11,12 @@ $(document).ready(function(){
     var departureMonth = $('#flight_date_month').val();
     var departureYear = $('#flight_date_year').val();
 
-    flightNumber = '1012';
-    airlineCode = 'B6';
-    departureDay = '1';
-    departureMonth = '6';
-    departureYear = '2014';
-
+    // flightNumber = '1012';
+    // airlineCode = 'B6';
+    // departureDay = '1';
+    // departureMonth = '6';
+    // departureYear = '2014';
+    
     $('#flight_form').slideToggle("slow");
         
     $("#new_flight input:checked").each(function() {
@@ -61,12 +61,16 @@ $(document).ready(function(){
             contacts: chkArray }
           }
         });
+        $('.instructions').slideUp("slow");
         $('.completed_flight_info').slideDown("slow");
+        $('.completed_flight_info').html("");
         $('.completed_flight_info').append("<ul>" + airlineName + " Flight # " + flightNumber + " has been added</ul>");
         $('.completed_flight_info').append("<button id='addAnotherFlightButton'>Add Another Flight</button>");
         $('.completed_flight_info').append("<button id='goToMyProfile' method='get' action='/profile'>Go to Your Profile</button>");
       },
       error: function() {
+        $('.completed_flight_info').slideDown("slow");
+        $('.completed_flight_info').html("");
         $('.completed_flight_info').append("<h1>" + "The information you entered was invalid" + "</h1>");
         $('.completed_flight_info').append("<button id='addAnotherFlightButton'>Try Again</button>");
         $('.completed_flight_info').append("<button id='goToMyProfile' method='get' action='/profile'>Go to Your Profile</button>");
@@ -81,6 +85,7 @@ $(document).ready(function(){
   $('.completed_flight_info').on('click', '#addAnotherFlightButton', function() {
     $('.completed_flight_info').slideToggle("slow");
     $('#flight_form').slideToggle("slow");
+
   });
   $('.completed_flight_info').on('click', '#goToMyProfile', function() {
     window.location = '/profile';
