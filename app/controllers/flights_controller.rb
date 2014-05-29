@@ -9,26 +9,27 @@ class FlightsController < ApplicationController
     @flight.user = current_user
     if @flight.save
       flight = @flight
-      # UserEmailsWorker.perform_async(flight.id, current_user.id)
+      UserEmailsWorker.perform_async(flight.id, current_user.id)
       recipients = params["flight"]["contacts"]
       if recipients != nil
         recipients.each do |id|
           ContactsFlights.create(contact_id: id, flight_id: flight.id)
-          # ContactsTextsWorker.perform_async #(id)
+          #ContactsTextsWorker.perform_async #(id)
           contact = Contact.find(id)
           address = contact.email
-          # ContactsEmailsWorker.perform_async(address, flight.id, current_user.id, contact.id)
+          ContactsEmailsWorker.perform_async(address, flight.id, current_user.id, contact.id)
         end
       end
     end
-    respond_to do |format|
-      if @flight.save
-        format.json { render json: @flight, status: :created }
-      else
-        format.json { render json: @flight.errors, status: :unprocessable_entity }
-      end
-    end
   end
+  #   respond_to do |format|
+  #     if @flight.save
+  #       format.json { render json: @flight, status: :created }
+  #     else
+  #       format.json { render json: @flight.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
 
 private
   def flight_params
