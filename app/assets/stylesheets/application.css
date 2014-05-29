@@ -22,9 +22,9 @@ html {
 	padding-bottom: 100px;
 }
 
-body {
-	background-color: F2FDF7;
-/*	background-image: url(../images/light_grey.png);*/
+#body {
+	background-color: #F2FDF7;
+/*	background-image: url('../images/light_grey.png') !important;*/
 } 
 
 .instructions {
@@ -36,8 +36,8 @@ body {
 }
 
 .add_contact_form {
-	padding-top: 10px;
-	padding-bottom: 10px;
+/*	padding-top: 10px;
+	padding-bottom: 10px;*/
 }
 
 .navbar-fixed-bottom {
@@ -50,5 +50,10 @@ body {
 
 .form_field {
 	border-radius: 5px;
+	margin-left: 5px;
+	margin-right: 10px;
+}
+#contacts_list{
+	padding:0px 0px 5px 0px;
 }
 
