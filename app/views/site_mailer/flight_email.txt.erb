@@ -3,6 +3,6 @@ Subject <%= @user.full_name %> wants to let you know about an upcoming flight
 
 <%= @user.full_name %> booked a flight and wants to let you know their itinerary.
 
-  <%= @contact.full_name %>, I hope you feel special,
-    <%= @user.full_name %> wanted you to know that they will be flying <%=@flight.airline_name%> Airlines on <%= @flight.date_month %>/<%= @flight.date_day %>/<%= @flight.date_year %>.
+  <%= @contact.full_name %>,
+    <%= @user.full_name %> wanted you to know that they will be flying <%=@flight.airline_name%> airlines on <%= @flight.date_month %>/<%= @flight.date_day %>/<%= @flight.date_year %>.
     <%= @user.first_name %> will be leaving <%= @flight.departure_city %>, from <%= @flight.departure_airport %> at <%= @flight.departure_time.localtime %>, and arriving in <%= @flight.arrival_city %>, at <%= @flight.arrival_airport %> at approximately <%= @flight.arrival_time.localtime %>
