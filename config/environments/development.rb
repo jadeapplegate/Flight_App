@@ -27,7 +27,10 @@ Rails.application.configure do
   # number of complex assets.
   config.assets.debug = true
 
-  ENV['REDISTOGO_URL'] = 'redis:://@localhost:6379'
+  ENV["REDISTOGO_URL"] = 'redis://redistogo:f08e5f956b0aa208124e197c4c017f4d@angelfish.redistogo.com:9339/'
+  #check connection and this: redis:://@localhost:6379'
+  #uri = URI.parse(ENV["REDISTOGO_URL"])
+  #REDIS = Redis.new(:url => ENV['REDISTOGO_URL'])
 
   # Adds additional error checking when serving assets at runtime.
   # Checks for improperly declared sprockets dependencies.
