@@ -11,7 +11,6 @@
         <li><%= @flight.airline_name %> Flight # <%= @flight.flight_number %></li>
         <li>Leaving <%= @flight.departure_city %>, from <%= @flight.departure_airport %></li>
         <li>Flying out on <%= @flight.date_month %>/<%= @flight.date_day %>/<%= @flight.date_year %> at: <%= @flight.departure_time.strftime("%r") %> </li>
-        <li><%= @flight.stops %> stops</li>
         <li>Arriving in <%= @flight.arrival_city %>, at <%= @flight.arrival_airport %> </li>
         <li>Arrival Time: <%= @flight.arrival_time.strftime("%r") %></li>
     </ul>
