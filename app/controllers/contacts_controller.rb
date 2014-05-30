@@ -11,6 +11,9 @@ class ContactsController < ApplicationController
     if @contact.save
       flash[:notice] = "Contact successfully created"
       redirect_to "/profile"
+    else
+      flash[:error] = "Contact not created, try again"
+      redirect_to "/profile"
     end
   end
 

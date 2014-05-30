@@ -11,8 +11,8 @@ class Contact < ActiveRecord::Base
   validates :email, presence: true
   validates_format_of :email, :with => /\A(\S+)@(.+)\.(\S+)\z/
   validates :phone, presence: true
-  validates_length_of :phone, :minimum => 10
-
+  validates_length_of :phone, :is => 10
+  validates :phone, format: { with: /\d{3}\d{3}\d{4}/, message: "bad format" }
 
   def full_name
     "#{first_name} #{last_name}"

@@ -2,11 +2,8 @@
 	<div class="instructions">
 		<h2>Add a new contact:</h2>
 	</div>
+	<h2><%= flash[:error] %></h2>
 
-	<!-- displays notice when flight created sucessfully -->
-	<!-- <h2><%#= flash[:notice] %></h2> -->
-
-		<!-- new contact form -->
 	<div class='clearfix'>
 		<div class="add_contact_form col-md-6">
 			<%= form_for @contact do |f| %>
