@@ -69,7 +69,7 @@ a, a:hover{
 }
 
 .navbar-brand {
-			font-family: monaco;
+	font-family: monaco;
 }
 
 .contact_submit {
@@ -79,8 +79,14 @@ a, a:hover{
 
 .landing_page {
 	color: white;
-	border: 1px solid black;
+	padding-left:130px;
+	border: 6px solid white;
 	border-radius: 5px;
+}
+
+.landing_page h3 {
+	font-family: monaco;	
+	padding:8px;
 }
 
 #flight_form input, .sign_in_form input, .sign_up_form input {
@@ -96,16 +102,42 @@ a, a:hover{
 #contacts_list{
 	padding:0px 0px 5px 0px;
 }
+
 .contact_dropdown label{
 	margin-right:8px;
 }
+
 .alert.alert-success{
 	background-color: rgb(44, 62, 80);	
 	border-color: rgb(44, 62, 80);
 }
+
 .some-padding{
 	padding-left:14px;
 }
+
 .some-more-padding{
 	padding-left:14px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
