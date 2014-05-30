@@ -61,11 +61,15 @@ a, a:hover{
 }
 
 .navbar-text a, .nav.navbar-nav li a, .nav.navbar-nav li a:hover{
-	color: grey;
+	color: silver;
 }
 
 .nav.navbar-nav li a:hover{
 	text-decoration: underline;
+}
+
+.navbar-brand {
+			font-family: monaco;
 }
 
 .contact_submit {
@@ -73,12 +77,14 @@ a, a:hover{
 	margin-left: 1px;
 }
 
-.contact_dropdown{
-}
-
 .landing_page {
 	color: white;
-	font-style: italic;
+	border: 1px solid black;
+	border-radius: 5px;
+}
+
+#flight_form input, .sign_in_form input, .sign_up_form input {
+	border-radius: 5px;
 }
 
 .form_field {
@@ -89,4 +95,17 @@ a, a:hover{
 
 #contacts_list{
 	padding:0px 0px 5px 0px;
+}
+.contact_dropdown label{
+	margin-right:8px;
+}
+.alert.alert-success{
+	background-color: rgb(44, 62, 80);	
+	border-color: rgb(44, 62, 80);
+}
+.some-padding{
+	padding-left:14px;
+}
+.some-more-padding{
+	padding-left:14px;
 }

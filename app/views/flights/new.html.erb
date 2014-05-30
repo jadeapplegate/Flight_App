@@ -24,12 +24,13 @@
             <%= f.select "date_year", options_for_select([ ['Year'], ['2014', '2014'], ['2015', '2015'] ]) %>
           </div>
           <div class="contact_dropdown">
-            <%= f.label "Select Contact To Notify:" %>
-            <%= f.collection_check_boxes(:contact_id, current_user.contacts, :id, :full_name) %>
+
+            <%= f.label "Select Contact To Notify:" %> 
+            <%= f.collection_check_boxes(:contact_id, current_user.contacts, :id, :full_name) %> 
             <!-- loop through and add li for each contact, or padding on either side of checkbox -->
           </div>
           <div class="submit">
-            <%= f.submit class: 'btn btn-success btn-sm rounded', id: "flightButton" %>
+            <%= f.submit class: 'btn btn-primary btn-sm rounded', id: "flightButton" %>
           </div>
         </div>
       <% end %>
@@ -41,7 +42,7 @@
 <% else %>
   <div class="row">
     <div class="landing_page">
-      <h3> Easily share your travel plans with friends and family. </h3>
+      <h3> Easily share your travel plans with friends and family. FlightShare  </h3>
     </div>
   </div>
 <% end %>
