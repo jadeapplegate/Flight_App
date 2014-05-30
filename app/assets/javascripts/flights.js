@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(document).on("page:load ready", function() {
   var apiKey = $('body').data('key');
   var apiID = $('body').data('api');
 
@@ -17,7 +17,7 @@ $(document).ready(function(){
     // departureMonth = '6';
     // departureYear = '2014';
     
-    $('#flight_form').slideToggle("slow");
+    $('#airplane_form').slideToggle("slow");
         
     $("#airplane_form input:checked").each(function() {
       chkArray.push($(this).val());
@@ -28,11 +28,11 @@ $(document).ready(function(){
     $.ajax({
       url: "https://api.flightstats.com/flex/schedules/rest/v1/jsonp/flight/" + airlineCode + "/" + flightNumber + "/departing/" + departureYear + "/" + departureMonth + "/" + departureDay + "?appId=" + apiID + "&appKey=" + apiKey,
       method: 'get',
-      timeout: 3000,
+      timeout: 5000,
       dataType: "jsonp",
       success: function(data) {
         var airlineName = data.appendix.airlines[0].name;
-        var departureAirport = data.appendix.airports[1].name;
+        var departureAirport = data.appendix.airports[0].name;
         var departureCity = data.appendix.airports[1].city;
         var arrivalAirport = data.appendix.airports[0].name;
         var arrivalCity = data.appendix.airports[0].city;
@@ -84,7 +84,7 @@ $(document).ready(function(){
   });
   $('.completed_flight_info').on('click', '#addAnotherFlightButton', function() {
     $('.completed_flight_info').slideToggle("slow");
-    $('#flight_form').slideToggle("slow");
+    $('#airplane_form').slideToggle("slow");
 
   });
   $('.completed_flight_info').on('click', '#goToMyProfile', function() {
