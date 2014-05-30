@@ -2,7 +2,7 @@ $(document).ready(function(){
   var apiKey = $('body').data('key');
   var apiID = $('body').data('api');
 
-  $('#flightButton').on('click', function(event){
+  $('#airplane_form').on('submit', function(event){
     event.preventDefault();
     var chkArray = [];
     var flightNumber = $('#flight_flight_number').val();
@@ -19,7 +19,7 @@ $(document).ready(function(){
     
     $('#flight_form').slideToggle("slow");
         
-    $("#new_flight input:checked").each(function() {
+    $("#airplane_form input:checked").each(function() {
       chkArray.push($(this).val());
     });
 
@@ -28,14 +28,14 @@ $(document).ready(function(){
     $.ajax({
       url: "https://api.flightstats.com/flex/schedules/rest/v1/jsonp/flight/" + airlineCode + "/" + flightNumber + "/departing/" + departureYear + "/" + departureMonth + "/" + departureDay + "?appId=" + apiID + "&appKey=" + apiKey,
       method: 'get',
-      timeout: 5000,
+      timeout: 3000,
       dataType: "jsonp",
       success: function(data) {
         var airlineName = data.appendix.airlines[0].name;
-        var departureAirport = data.appendix.airports[0].name;
-        var departureCity = data.appendix.airports[0].city;
-        var arrivalAirport = data.appendix.airports[1].name;
-        var arrivalCity = data.appendix.airports[1].city;
+        var departureAirport = data.appendix.airports[1].name;
+        var departureCity = data.appendix.airports[1].city;
+        var arrivalAirport = data.appendix.airports[0].name;
+        var arrivalCity = data.appendix.airports[0].city;
         var stops = data.scheduledFlights[0].stops;
         var departureTime = data.scheduledFlights[0].departureTime;
         var arrivalTime = data.scheduledFlights[0].arrivalTime; 

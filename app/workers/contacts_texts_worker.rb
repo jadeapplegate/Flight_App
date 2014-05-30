@@ -1,11 +1,8 @@
 class ContactsTextsWorker
   include Sidekiq::Worker
-  include Sidetiq::Schedulable
- 
-  sidekiq_options retry: false
 
-  def perform #(contact_id)
-    TwilioTexter.send_text  #(contact_id)
+  def perform(flight_id, contact_id, current_user_id)
+    TwilioTexter.send_text(flight_id, contact_id, current_user_id)
   end
 end
 

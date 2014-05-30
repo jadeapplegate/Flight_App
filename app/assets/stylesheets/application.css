@@ -27,9 +27,12 @@ html {
 	padding-bottom: 100px;
 }
 
+
 #body {
 	background-color: #F2FDF7;
-/*	background-image: url('../images/light_grey.png') !important;*/
+	background-image: url(http://gogame-newsite-alpha.s3.amazonaws.com/oldblog_media/2014/04/Airplane-landing.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
 } 
 
 .instructions {
