@@ -5,7 +5,7 @@ class SiteMailer < ActionMailer::Base
     @user = User.find(current_user_id)
     @flight = Flight.find(flight_id)
     @contact = Contact.find(contact_id)
-    mail(to: address, subject: @user.full_name + " has sent you flight info")
+    mail(to: address, subject: @user.full_name.to_s.titleize + " has sent you flight info")
   end
 
   def confirm_user(flight_id, current_user_id)
@@ -18,6 +18,6 @@ class SiteMailer < ActionMailer::Base
     @flight = Flight.find(flight_id)
     @contact = Contact.find(contact_id)
     @user = @contact.user
-    mail(to: @contact.email, subject: "Just a reminder, " + @user.full_name + " is flying today")
+    mail(to: @contact.email, subject: "Just a reminder, " + @user.full_name.to_s.titleize + " is flying today")
   end
 end
