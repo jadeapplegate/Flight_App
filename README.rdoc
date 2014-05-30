@@ -2,7 +2,7 @@
 
 FlightShare shares your travel itinerary with your selected contact(s) via email and text notifications.
 
-<LINK TO HEROKU SITE> 
+https://flightshare.herokuapp.com/ 
 
 User can:
  - create an account, sign in/out
