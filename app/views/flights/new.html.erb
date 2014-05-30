@@ -2,59 +2,50 @@
 <%#= link_to "Edit", edit_flight_path(@flight) %>
 <%# end %>
 <body data-api="<%= ENV['API_ID'] %>" data-key="<%= ENV['APP_KEY'] %>">
+
 <h2><%= flash[:error] %></h2>
 <% if current_user %> 
   <div class="instructions">
-    <h2>Add a new flight:</h2>
+    <h4>Add a new flight:</h4>
   </div>
-<div class="new_flight_form">
+<div class="new_flight_form col-md-8">
   <div id="flight_form">
-    <% if current_user %> 
-    	<%= form_for @flight, :html => {:id => "airplane_form"} do |f| %>
-        <div class="flight_info">
-          <%= f.label "Flight #: " %>
-          <%= f.text_field "flight_number", placeholder: "ex: 902" %>
-          <%= f.label "Airline: " %>
-          <%= f.select "airline_code", options_for_select([ ['Select One'], ['Aero Mexico', 'AM'], ['Air Canada', 'AC'], ['Air France', 'AF'], ['Air Fiji', 'PC'], ['AirTran', 'FL'], ['Alaska', 'AS'], ['Aloha', 'AQ'], ['American', 'AA'], ['British Airways', 'BA'], ['Cathay Pacific', 'CX'], ['Continental', 'CO'], ['Delta', 'DL'], ['Finnair', 'AY'], ['Frontier', 'F9'], ['Hawaiian', 'HA'], ['Japan', 'JL'], ['JetBlue', 'B6'], ['Lufthansa', 'LH'], ['Malaysia', 'MH'], ['Southwest', 'WN'], ['Alaska', 'AS'], ['United', 'UA'], ['US Airways', 'US'], ['Spirit', 'NK'], ['Swissair', 'SR'], ['Virgin', 'VX']]) %>
-          <%= f.label "Date of Departure:" %>
-          <%= f.select "date_month", options_for_select([ ['Month'], ['January', '01'], ['February', '02'], ['March', '03'], ['April', '04'], ['May', '05'], ['June', '06'], ['July', '07'], ['August', '08'], ['September', '09'], ['October', '10'], ['November', '11'], ['December', '12'] ]) %>
-          <%= f.select "date_day", options_for_select([ ['Day'], ['1', '01'],['2', '02'],['3', '03'],['4', '04'],['5', '05'],['6', '06'],['7', '07'],['8', '08'],['9', '09'],['10', '10'],['11', '11'],['12', '12'],['13', '13'],['14', '14'],['15', '15'],['16', '16'],['17', '17'],['18', '18'],['19', '19'],['20', '20'],['21', '21'],['22', '22'],['23', '23'],['24', '24'],['25', '25'],['26', '26'],['27', '27'],['28', '28'],['29', '29'],['30', '30'],['31', '31']  ]) %>
-          <%= f.select "date_year", options_for_select([ ['Year'], ['2014', '2014'], ['2015', '2015'] ]) %>
-        </div>
-        <div class="contact_dropdown">
-          <%= f.label "Select Contact To Notify:" %>
-          <%= f.collection_check_boxes(:contact_id, current_user.contacts, :id, :full_name) %>
-          <!-- loop through and add li for each contact, or padding on either side of checkbox -->
-        </div>
-        <div class="submit">
-          <%= f.submit class: 'btn btn-success btn-sm rounded', id: "flightButton" %>
+    <div class="col-md-9">
+      <% if current_user %> 
+      	<%= form_for @flight, :html => {:id => "airplane_form"} do |f| %>
+          <div class="flight_info">
+            <%= f.label "Flight #: " %>
+            <%= f.text_field "flight_number", placeholder: "ex: 902" %>
+            <%= f.label "Airline: " %>
+            <%= f.select "airline_code", options_for_select([ ['Select One'], ['Aero Mexico', 'AM'], ['Air Canada', 'AC'], ['Air France', 'AF'], ['Air Fiji', 'PC'], ['AirTran', 'FL'], ['Alaska', 'AS'], ['Aloha', 'AQ'], ['American', 'AA'], ['British Airways', 'BA'], ['Cathay Pacific', 'CX'], ['Continental', 'CO'], ['Delta', 'DL'], ['Finnair', 'AY'], ['Frontier', 'F9'], ['Hawaiian', 'HA'], ['Japan', 'JL'], ['JetBlue', 'B6'], ['Lufthansa', 'LH'], ['Malaysia', 'MH'], ['Southwest', 'WN'], ['Alaska', 'AS'], ['United', 'UA'], ['US Airways', 'US'], ['Spirit', 'NK'], ['Swissair', 'SR'], ['Virgin', 'VX']]) %>
+            <%= f.label "Date of Departure:" %>
+            <%= f.select "date_month", options_for_select([ ['Month'], ['January', '01'], ['February', '02'], ['March', '03'], ['April', '04'], ['May', '05'], ['June', '06'], ['July', '07'], ['August', '08'], ['September', '09'], ['October', '10'], ['November', '11'], ['December', '12'] ]) %>
+            <%= f.select "date_day", options_for_select([ ['Day'], ['1', '01'],['2', '02'],['3', '03'],['4', '04'],['5', '05'],['6', '06'],['7', '07'],['8', '08'],['9', '09'],['10', '10'],['11', '11'],['12', '12'],['13', '13'],['14', '14'],['15', '15'],['16', '16'],['17', '17'],['18', '18'],['19', '19'],['20', '20'],['21', '21'],['22', '22'],['23', '23'],['24', '24'],['25', '25'],['26', '26'],['27', '27'],['28', '28'],['29', '29'],['30', '30'],['31', '31']  ]) %>
+            <%= f.select "date_year", options_for_select([ ['Year'], ['2014', '2014'], ['2015', '2015'] ]) %>
+          </div>
+          <div class="contact_dropdown">
+
+            <%= f.label "Select Contact To Notify:" %> 
+            <%= f.collection_check_boxes(:contact_id, current_user.contacts, :id, :full_name) %> 
+            <!-- loop through and add li for each contact, or padding on either side of checkbox -->
+          </div>
+          <div class="submit">
+            <%= f.submit class: 'btn btn-primary btn-sm rounded', id: "flightButton" %>
+          </div>
         </div>
       <% end %>
     <% end %>
+
   </div>
   <div class="completed_flight_info">
   </div>
 <% else %>
   <div class="row">
-    <div class="col-xs-4 col-xs-offset-8">
-      <h2> How it works </h2>
-      <h3> Sign up </h3>
-      <h3> Add Contacts </h3>
-      <h3> Add your flight </h3>
-      <h3> FlightShare takes care of the rest </h3>
-<!--       <h3> FlightShare shares your travel itinerary with your selected contact(s) via email and text notifications.<br><br> </h3>
- -->    </div>
-  </div>
-  <div class="row">
-    <div class="col-xs-2">
-      <h4>
-        <%= link_to "Sign up", new_user_registration_path %> or
-        <%= link_to "sign in", new_user_session_path %> to begin.
-      </h4>
+    <div class="landing_page">
+      <h3> Easily share your travel plans with friends and family. </h3><h3>Sit back, relax, and enjoy your flight. </h3><h3>We'll take care of the rest!  </h3>
     </div>
   </div>
 <% end %>
-
 
 </body>
 

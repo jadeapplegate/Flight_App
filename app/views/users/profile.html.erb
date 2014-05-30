@@ -1,6 +1,6 @@
 <% if current_user %>
-	<div class="instructions">
-		<h2>Add a new contact:</h2>
+	<div class="instructions ">
+		<h4>Add a new contact:</h4>
 	</div>
 	<h2><%= flash[:error] %></h2>
 
@@ -34,33 +34,41 @@
 		  	<div class="col-md-3">
 				</div>
 			 	<div class="contact_submit col-md-9">	
-		  		<%= f.submit class: 'btn btn-success btn-sm rounded', id: "contactButton" %>
+		  		<%= f.submit class: 'btn btn-primary btn-sm rounded', id: "contactButton" %>
 		    </div>
 			<% end %>
 		</div>
 
 		<!-- displays a list of all contacts for current user -->
 		<div class="panel panel-primary col-md-6" id="contacts_list" >
-			<div class="panel-heading" id="contacts_list">Your Contacts:</div>
+			<div class="panel-heading" id="contacts_list">
+				<div class="some-padding">
+					Your Contacts:
+				</div>
+			</div>
+			<div class="some-padding">
 				<% @contacts.each do |contact| %>
-					<%= contact.full_name %>
+					<strong><%= contact.full_name %></strong>
 					<%= contact.email %><br>
 				<% end %>
+			</div>
 		</div>
 	</div>
 
 	<!-- displays a list of all flights for current user -->
 	<div class="panel panel-primary" id="flights_list">
 		<div class="panel-heading" id="flights_list">Your Flights:</div>
-			<% @flights.each do |flight| %>
-				<%= flight.airline_name -%> :
-				<%= flight.flight_number -%> -
-				<%= flight.date_month -%> /
-				<%= flight.date_day -%>/
-				<%= flight.date_year -%>, 
-				<%= flight.departure_airport -%> to 
-				<%= flight.arrival_airport -%></br>
-			<% end %>
+			<div class="some-more-padding">
+				<% @flights.each do |flight| %>
+					<strong><%= flight.airline_name -%> :
+					<%= flight.flight_number -%> -</strong>
+					<%= flight.date_month -%> /
+					<%= flight.date_day -%>/
+					<%= flight.date_year -%>, 
+					<%= flight.departure_airport -%> to 
+					<%= flight.arrival_airport -%></br>
+				<% end %>
+			</div>	
 		</div>
 	</div>
 <% else %>

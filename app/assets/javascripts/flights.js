@@ -11,11 +11,11 @@ $(document).on("page:load ready", function() {
     var departureMonth = $('#flight_date_month').val();
     var departureYear = $('#flight_date_year').val();
 
-    // flightNumber = '1012';
-    // airlineCode = 'B6';
-    // departureDay = '1';
-    // departureMonth = '6';
-    // departureYear = '2014';
+    flightNumber = '1012';
+    airlineCode = 'B6';
+    departureDay = '1';
+    departureMonth = '6';
+    departureYear = '2014';
     
     $('#airplane_form').slideToggle("slow");
         
@@ -64,16 +64,16 @@ $(document).on("page:load ready", function() {
         $('.instructions').slideUp("slow");
         $('.completed_flight_info').slideDown("slow");
         $('.completed_flight_info').html("");
-        $('.completed_flight_info').append("<ul>" + airlineName + " Flight # " + flightNumber + " has been added</ul>");
-        $('.completed_flight_info').append("<button id='addAnotherFlightButton'>Add Another Flight</button>");
-        $('.completed_flight_info').append("<button id='goToMyProfile' method='get' action='/profile'>Go to Your Profile</button>");
+        $('.completed_flight_info').append("<h4>" + airlineName + " Flight # " + flightNumber + " has been added</h4>");
+        $('.completed_flight_info').append("<button class='btn btn-primary' id='addAnotherFlightButton'>Add Another Flight</button> ");
+        $('.completed_flight_info').append("<button class='btn btn-primary' id='goToMyProfile' method='get' action='/profile'>Go to Your Profile</button>");
       },
       error: function() {
         $('.completed_flight_info').slideDown("slow");
         $('.completed_flight_info').html("");
-        $('.completed_flight_info').append("<h1>" + "The information you entered was invalid" + "</h1>");
-        $('.completed_flight_info').append("<button id='addAnotherFlightButton'>Try Again</button>");
-        $('.completed_flight_info').append("<button id='goToMyProfile' method='get' action='/profile'>Go to Your Profile</button>");
+        $('.completed_flight_info').append("<h4>" + "The information you entered was invalid" + "</h4>");
+        $('.completed_flight_info').append("<button class='btn btn-primary' id='addAnotherFlightButton'>Try Again</button> ");
+        $('.completed_flight_info').append("<button class='btn btn-primary' id='goToMyProfile' method='get' action='/profile'>Go to Your Profile</button>");
       }
     });
     $(':text').val('');
