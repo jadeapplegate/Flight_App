@@ -3,7 +3,7 @@ class UserTextsWorker
   include Sidetiq::Schedulable
 
   recurrence backfill: true do
-    hourly.minute_of_hour(8)
+    hourly.minute_of_hour(18)
   end
   
   def perform
@@ -23,6 +23,7 @@ class UserTextsWorker
             flight.arrival_terminal = body["flightStatuses"][0]["airportResources"]["arrivalTerminal"]
             flight.arrival_gate = body["flightStatuses"][0]["airportResources"]["arrivalGate"]
             flight.baggage_claim = body["flightStatuses"][0]["airportResources"]["baggage"]
+            flight.save
             ContactsTextsWorker.perform_async(flight_id, contact_id, current_user_id)
           end
         end

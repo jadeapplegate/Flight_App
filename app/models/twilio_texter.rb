@@ -5,7 +5,7 @@ class TwilioTexter
   twilio_token = ENV['TWILIO_TOKEN']
   @twilio_client = Twilio::REST::Client.new twilio_sid, twilio_token
 
-  def send_text(flight_id, contact_id, current_user_id)
+  def self.send_text(flight_id, contact_id, current_user_id)
     @flight = Flight.find(flight_id)
     @contact = Contact.find(contact_id)
     @user = User.find(current_user_id)
@@ -20,7 +20,7 @@ class TwilioTexter
     end
 
     sms = @twilio_client.account.sms.messages.create(
-      :body => "FlightShare is letting you know that " + @user.full_name.to_s + " is about to get on their flight. " + @user.first_name.to_s + " will be arriving at " + @flight.arrival_terminal.to_s + ", at Gate " + @flight.arrival_gate.to_s + ", baggage claim number " + @flight.baggage_claim.to_s,
+      :body => "FlightShare notification:  " + @user.full_name.to_s.titleize + "'s " + @flight.airline_name.to_s + " flight #" + @flight.flight_number.to_s +  " will be arriving at terminal " + @flight.arrival_terminal.to_s + ", gate " + @flight.arrival_gate.to_s + ", baggage claim number " + @flight.baggage_claim.to_s + ".",
       :to => '+16173067739', #@contact.phone 
       :from => '+14155994592'
     )

@@ -7,11 +7,10 @@
   <div class="instructions">
     <h2>Add a new flight:</h2>
   </div>
-
 <div class="new_flight_form">
   <div id="flight_form">
     <% if current_user %> 
-    	<%= form_for @flight do |f| %>
+    	<%= form_for @flight, :html => {:id => "airplane_form"} do |f| %>
         <div class="flight_info">
           <%= f.label "Flight #: " %>
           <%= f.text_field "flight_number", placeholder: "ex: 902" %>
