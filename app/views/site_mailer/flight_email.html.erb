@@ -7,7 +7,7 @@
   <h1><%= @user.full_name.titleize %> wants to let you know about an upcoming flight</h1>
   <h3> <%= @contact.full_name.titleize %>, I hope you feel special! </h3>
     <p> <%= @user.full_name.titleize %> wanted you to know that they will be flying <%=@flight.airline_name%> Airlines on <%= @flight.date_month %>/<%= @flight.date_day %>/<%= @flight.date_year %>.</p>
-    <p> <%= @user.first_name.capitalize %> will be leaving <%= @flight.departure_city %>, from <%= @flight.departure_airport %> at <%= @flight.departure_time.localtime.strftime("on %D at %r") %>, and arriving in <%= @flight.arrival_city %>, at <%= @flight.arrival_airport %> at approximately <%= @flight.arrival_time.localtime.strftime("on %D at %r") %></p>
+    <p> <%= @user.first_name.capitalize %> will be leaving <%= @flight.departure_city %>, from <%= @flight.departure_airport %> at <%= @flight.departure_time.strftime("%r") %>, and arriving in <%= @flight.arrival_city %>, at <%= @flight.arrival_airport %> at approximately <%= @flight.arrival_time.strftime("%r") %></p>
 
   </body>
 </html>
