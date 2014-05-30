@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   def profile
     if current_user
       @flight = Flight.new
-      @flights = current_user.flights
+      @flights = current_user.flights.where("departure_time > ?", DateTime.now - 7.hours)
       @contacts = current_user.contacts
       @contact = Contact.new
     else

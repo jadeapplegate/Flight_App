@@ -6,10 +6,10 @@
 
         <%= @flight.airline_name %> Flight # <%= @flight.flight_number %>
         Leaving <%= @flight.departure_city %>, from <%= @flight.departure_airport %>
-        Flying out on <%= @flight.date_month %>/<%= @flight.date_day %>/<%= @flight.date_year %> at: <%= @flight.departure_time.localtime.strftime("on %D at %r") %>
+        Flying out on <%= @flight.date_month %>/<%= @flight.date_day %>/<%= @flight.date_year %> at: <%= @flight.departure_time.strftime("%r") %>
         <%= @flight.stops %> stop>
         Arriving in <%= @flight.arrival_city %>, at <%= @flight.arrival_airport %>
-        Arrival Time: <%= @flight.arrival_time.localtime.strftime("on %D at %r") %>
+        Arrival Time: <%= @flight.arrival_time.strftime("%r") %>
 
 
 Thank you for using FlightShare!
