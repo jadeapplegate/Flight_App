@@ -12,12 +12,15 @@ class UserDelaysCheckersWorker
       possible_delay_flights.each do |flight|
         flight_id = flight.id 
         user_id = flight.user.id
-        response = Typhoeus.get("https://api.flightstats.com/flex/flightstatus/rest/v2/json/flight/status/" + flight.flightstats_id + "?appId=" + ENV['API_ID'] + "&appKey=" + ENV['APP_KEY'].to_s)
+        response = Typhoeus.get("https://api.flightstats.com/flex/flightstatus/rest/v2/json/flight/status/" + flight.flightstats_id.to_s + "?appId=" + ENV['API_ID'].to_s + "&appKey=" + ENV['APP_KEY'].to_s)
         body = JSON.parse(response.body)
-        flight.plan_departure = body.["flightStatus"][0]["operationalTimes"]["flightPlanPlannedDeparture"]
-        flight.plan_arrival = body.["flightStatus"][0]["operationalTimes"]["flightPlanPlannedArrival"]
-        if flight.plan_departure 
-        UserDelaysTextsWorker.perform_async(flight_id, user_id)
+        flight.plan_departure = body["flightStatus"]["operationalTimes"]["flightPlanPlannedDeparture"]
+        flight.plan_arrival = body["flightStatus"]["operationalTimes"]["flightPlanPlannedArrival"]
+        if (flight.plan_departure - flight.departure_time) > 900
+          UserDelaysTextsWorker.perform_async(flight_id, user_id)
+        else
+          puts "Your flight is on time!"
+        end
       end
     end
   end

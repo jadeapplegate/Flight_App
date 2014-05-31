@@ -3,11 +3,11 @@ class DelaysCheckersWorker
   include Sidetiq::Schedulable
 
   recurrence backfill: true do
-    hourly.minute_of_hour(10)
+    hourly.minute_of_hour()
   end
   
   def perform
-    possible_delay_flights = Flight.where("departure_time BETWEEN ? AND ?", DateTime.now - 7.hours, DateTime.now - 3.hours)
+    possible_delay_flights = Flight.where("departure_time BETWEEN ? AND ?", DateTime.now - 7.hours, DateTime.now - 4.hours)
     if possible_delay_flights.empty? == false
       possible_delay_flights.each do |flight|
         flight_id = flight.id 
@@ -16,9 +16,15 @@ class DelaysCheckersWorker
           text_contacts.each do |contact|
             contact_id = contact.id   
             user_id = contact.user.id 
-            response = Typhoeus.get("https://api.flightstats.com/flex/flightstatus/rest/v2/json/flight/status/" + flight.flightstats_id + "?appId=" + ENV['API_ID'] + "&appKey=" + ENV['APP_KEY'].to_s)
+            response = Typhoeus.get("https://api.flightstats.com/flex/flightstatus/rest/v2/json/flight/status/" + flight.flightstats_id.to_s + "?appId=" + ENV['API_ID'].to_s + "&appKey=" + ENV['APP_KEY'].to_s)
             body = JSON.parse(response.body)
-            DelaysTextsWorker.perform_async(flight_id, contact_id, user_id)
+            flight.plan_departure = body["flightStatus"]["operationalTimes"]["flightPlanPlannedDeparture"]["dateLocal"]
+            flight.plan_arrival = body["flightStatus"]["operationalTimes"]["flightPlanPlannedArrival"]["dateLocal"]
+            if (flight.plan_departure - flight.departure_time) > 900
+              DelaysTextsWorker.perform_async(flight_id, contact_id, user_id)
+            else
+              puts "Your flight is on time!"
+            end
           end
         end
       end

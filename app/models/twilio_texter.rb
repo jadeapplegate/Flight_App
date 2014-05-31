@@ -39,7 +39,7 @@ class TwilioTexter
     end
 
     sms = twilio_client.account.sms.messages.create(
-      :body => "FlightShare info: " + user.full_name.to_s.titleize + "s " + flight.airline_name.to_s + " flight #" + flight.flight_number.to_s +  " will be arriving at terminal " + flight.arrival_terminal.to_s + ", gate " + flight.arrival_gate.to_s + ", baggage claim number " + flight.baggage_claim.to_s + ".",
+      :body => "FlightShare: " + user.first_name.to_s.capitalize + "s flight, according to the airlines is delayed and now will be departing at " + flight.plan_departure.strftime("%I:%M%p") + ", and arriving at " + flight.plan_arrival.strftime("%I:%M%p") + ".",
       :to => '+16173067739', #contact.phone 
       :from => '+14155994592'
     )
@@ -59,7 +59,7 @@ class TwilioTexter
     end
 
     sms = twilio_client.account.sms.messages.create(
-      :body => "FlightShare info: " + user.full_name.to_s.titleize + "s " + flight.airline_name.to_s + " flight #" + flight.flight_number.to_s +  " will be arriving at terminal " + flight.arrival_terminal.to_s + ", gate " + flight.arrival_gate.to_s + ", baggage claim number " + flight.baggage_claim.to_s + ".",
+      :body => "FlightShare: We've just checked your flight and according to our info, it's delayed. Your flight will now be departing at " + flight.plan_departure.strftime("%I:%M%p") + " and arriving at " + flight.plan_arrival.strftime("%I:%M%p") + ".",
       :to => '+16173067739', #user.phone 
       :from => '+14155994592'
     )
