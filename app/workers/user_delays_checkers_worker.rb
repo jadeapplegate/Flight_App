@@ -3,7 +3,7 @@ class UserDelaysCheckersWorker
   include Sidetiq::Schedulable
 
   recurrence backfill: true do
-    hourly.minute_of_hour(1)
+    hourly.minute_of_hour(1, 31)
   end
   
   def perform
@@ -16,10 +16,8 @@ class UserDelaysCheckersWorker
         body = JSON.parse(response.body)
         flight.plan_departure = body["flightStatus"]["operationalTimes"]["flightPlanPlannedDeparture"]
         flight.plan_arrival = body["flightStatus"]["operationalTimes"]["flightPlanPlannedArrival"]
-        if (flight.plan_departure - flight.departure_time) > 900
+        if (flight.plan_departure - flight.departure_time) > 960
           UserDelaysTextsWorker.perform_async(flight_id, user_id)
-        else
-          puts "Your flight is on time!"
         end
       end
     end

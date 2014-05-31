@@ -3,7 +3,7 @@ class UserTextsWorker
   include Sidetiq::Schedulable
 
   recurrence backfill: true do
-    hourly.minute_of_hour(21)
+    hourly.minute_of_hour(10)
   end
   
   def perform
