@@ -16,7 +16,7 @@ class TwilioTexter
       flight.arrival_gate = "unavailable"
     end
 
-    sms = twilio_client.account.sms.messages.create(
+    sms = @twilio_client.account.sms.messages.create(
       :body => "FlightShare info: " + user.full_name.to_s.titleize + "s " + flight.airline_name.to_s + " flight #" + flight.flight_number.to_s +  " will be arriving at terminal " + flight.arrival_terminal.to_s + ", gate " + flight.arrival_gate.to_s + ", baggage claim number " + flight.baggage_claim.to_s + ".",
       :to => '+16173067739', #@contact.phone 
       :from => '+14155994592'

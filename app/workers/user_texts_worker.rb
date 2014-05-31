@@ -18,6 +18,7 @@ class UserTextsWorker
             current_user_id = contact.user.id 
             response = Typhoeus.get("https://api.flightstats.com/flex/flightstatus/rest/v2/json/flight/status/" + flight.airline_code.to_s + "/" + flight.flight_number.to_s + "/dep/" + flight.date_year.to_s + "/" + flight.date_month.to_s + "/" + flight.date_day.to_s + "?appId=" + ENV['API_ID'].to_s + "&appKey=" + ENV['APP_KEY'].to_s + "&utc=false")
             body = JSON.parse(response.body)
+            flight.flightstats_id = body["flightStatuses"][0]["flightId"]
             flight.departure_terminal = body["flightStatuses"][0]["airportResources"]["departureTerminal"]
             flight.departure_gate = body["flightStatuses"][0]["airportResources"]["departureGate"]
             flight.arrival_terminal = body["flightStatuses"][0]["airportResources"]["arrivalTerminal"]
