@@ -1,10 +1,10 @@
+<!-- if current user, display form for adding a contact -->
 <% if current_user %>
 	<div class="instructions ">
 		<h4>Add a new contact:</h4>
 	</div>
 	<h2><%= flash[:error] %></h2>
-	
-<!-- display form for adding a contact -->
+
 	<div class='clearfix'>
 		<div class="add_contact_form col-md-6">
 			<%= form_for @contact, :html => {:id => "contact_form"} do |f| %>
