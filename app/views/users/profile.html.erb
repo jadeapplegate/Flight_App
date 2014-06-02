@@ -3,7 +3,8 @@
 		<h4>Add a new contact:</h4>
 	</div>
 	<h2><%= flash[:error] %></h2>
-
+	
+<!-- display form for adding a contact -->
 	<div class='clearfix'>
 		<div class="add_contact_form col-md-6">
 			<%= form_for @contact, :html => {:id => "contact_form"} do |f| %>
@@ -71,7 +72,9 @@
 			</div>	
 		</div>
 	</div>
-<% else %>
+
+	<!-- if no current user, prompt to sign in or sign up -->
+<% else %> 
 	<h1> Please sign up or sign in to view this page </h1>
 <% end %>
 
