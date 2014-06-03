@@ -33,7 +33,6 @@ $(document).on("page:load ready", function() {
         var departureTime = data.request.date.interpreted + " " + data.flights[0].departureTime;
         var arrivalTime = data.request.date.interpreted + " " + data.flights[0].arrivalTime; 
 
-
         $.ajax({
           url: '/flights',
           method: 'post',
@@ -78,9 +77,8 @@ $(document).on("page:load ready", function() {
     $('.completed_flight_info').on('click', '#addAnotherFlightButton', function() {
     $('.completed_flight_info').slideToggle("slow");
     $('#airplane_form').slideToggle("slow");
-
   });
-  $('.completed_flight_info').on('click', '#goToMyProfile', function() {
+    $('.completed_flight_info').on('click', '#goToMyProfile', function() {
     window.location = '/profile';
   });
 });
