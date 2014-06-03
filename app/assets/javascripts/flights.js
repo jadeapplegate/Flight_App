@@ -55,7 +55,7 @@ $(document).on("page:load ready", function() {
         $('.instructions').slideUp("slow");
         $('.completed_flight_info').slideDown("slow");
         $('.completed_flight_info').html("");
-        $('.completed_flight_info').append("<h4>" + airlineName + " Flight # " + flightNumber + " has been added</h4>");
+        $('.completed_flight_info').append("<h3>" + airlineName + " Flight # " + flightNumber + " has been added to your profile</h3>" + "<br>" + "<h4>You and your contacts will now be automatically notified regarding this flight</h4>" + "<br>" + "<h5>Thank you for using FlightShare!</h5>");
         $('.completed_flight_info').append("<button class='btn btn-primary' id='addAnotherFlightButton'>Add Another Flight</button> ");
         $('.completed_flight_info').append("<button class='btn btn-primary' id='goToMyProfile' method='get' action='/profile'>Go to Your Profile</button>");
       },

@@ -1,5 +1,6 @@
 <!-- if current user, display form for adding a contact -->
 <% if current_user %>
+	<h1><%= current_user.full_name.titleize %></h1><br>
 	<div class="instructions ">
 		<h4>Add a new contact:</h4>
 	</div>
@@ -30,7 +31,7 @@
 				  <%= f.label "Phone:" %>
 		  	</div>
 		  	<div class="col-md-9">
-				  <%= f.telephone_field "phone", placeholder: "(555)555-1212", class:'form_field' %>
+				  <%= f.telephone_field "phone", placeholder: "ex: 4151234567", class:'form_field' %>
 				</div>
 		  	<div class="col-md-3">
 				</div>
@@ -39,8 +40,6 @@
 		    </div>
 			<% end %>
 		</div>
-
-		<!-- displays a list of all contacts for current user -->
 		<div class="panel panel-primary col-md-6" id="contacts_list" >
 			<div class="panel-heading" id="contacts_list">
 				<div class="some-padding">
@@ -54,9 +53,6 @@
 				<% end %>
 			</div>
 		</div>
-	</div>
-
-	<!-- displays a list of all flights for current user -->
 	<div class="panel panel-primary" id="flights_list">
 		<div class="panel-heading" id="flights_list">Your Flights:</div>
 			<div class="some-more-padding">

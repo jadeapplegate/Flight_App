@@ -21,10 +21,9 @@
             <%= f.select "date_year", options_for_select([ ['Year'], ['2014', '2014'], ['2015', '2015'] ]) %>
           </div>
           <div class="contact_dropdown">
-
             <%= f.label "Select Contact To Notify:" %> 
-            <%= f.collection_check_boxes(:contact_id, current_user.contacts, :id, :full_name) %> 
-            <!-- loop through and add li for each contact, or padding on either side of checkbox -->
+            <%= f.collection_check_boxes(:contact_id, current_user.contacts, :id, :full_name) %>
+
           </div>
           <div class="submit">
             <%= f.submit class: 'btn btn-primary btn-sm rounded', id: "flightButton" %>
@@ -39,7 +38,7 @@
 <% else %>
   <div class="row">
     <div class="landing_page">
-      <h3> Easily share your travel plans with friends and family.</h3><h3>Sit back, relax, and enjoy your flight. </h3><h3>We'll take care of the rest!</h3>
+      <h3> Easily share your travel plans with friends and family.</h3><h3>First, sign up or sign in.</h3><h3>Next, add some contacts.</h3> <h3> Then add a flight, and choose which contacts should receive your flight information.</h3><h3>Sit back, relax, and enjoy your flight.</h3><h3>We'll take care of the rest!</h3>
     </div>
   </div>
 <% end %>
